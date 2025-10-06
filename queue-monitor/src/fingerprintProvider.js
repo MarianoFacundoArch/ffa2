@@ -92,26 +92,25 @@ export async function launchFingerprintContext({ profileDir, launchOptions }) {
     // Apply the fingerprint
     plugin.useFingerprint(fingerprint);
 
-    // Launch with the fingerprint applied
-    const browser = await plugin.launch({
+    // Use launchPersistentContext (recommended by the plugin)
+    const context = await plugin.launchPersistentContext(profileDir, {
       headless: launchOptions?.headless ?? false,
       args: launchOptions?.args || [],
+      viewport: { width: 1280, height: 720 },
       ...(config.launchOptions || {}),
     });
 
-    if (!browser) {
-      console.warn('[fingerprint] Browser launch failed, using default context');
+    if (!context) {
+      console.warn('[fingerprint] Context launch failed, using default context');
       return null;
     }
 
-    // Create a page directly (fingerprint plugin doesn't need explicit context)
-    const page = await browser.newPage();
-
-    // Set viewport
-    await page.setViewportSize({ width: 1280, height: 720 });
+    // Get or create page
+    const pages = context.pages();
+    const page = pages.length > 0 ? pages[0] : await context.newPage();
 
     return {
-      browser,
+      context,
       page,
       fingerprint,
     };

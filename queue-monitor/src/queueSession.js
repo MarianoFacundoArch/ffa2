@@ -74,9 +74,9 @@ export class QueueSession extends EventEmitter {
         contextOptions: baseContextOptions,
       });
 
-      if (fingerprintResult?.page) {
-        this.browser = fingerprintResult.browser || null;
-        this.context = null; // Fingerprint plugin manages context internally
+      if (fingerprintResult?.context) {
+        this.browser = null; // launchPersistentContext returns context, not browser
+        this.context = fingerprintResult.context;
         this.page = fingerprintResult.page;
         this.fingerprintInfo = fingerprintResult.fingerprint ?? null;
         this.updateState({ fingerprintActive: true, fingerprintInfo: this.fingerprintInfo });
@@ -503,10 +503,6 @@ export class QueueSession extends EventEmitter {
     if (this.context) {
       await this.context.close().catch(() => {});
       this.context = null;
-    }
-    if (this.browser) {
-      await this.browser.close().catch(() => {});
-      this.browser = null;
     }
     this.updateState({ status: 'stopped', message: 'Session disposed' });
   }
