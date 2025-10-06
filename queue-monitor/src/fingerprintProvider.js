@@ -7,7 +7,7 @@ const API_ENV_KEYS = ['FINGERPRINT_API_KEY', 'PLAYWRIGHT_FINGERPRINT_API_KEY', '
 const DEFAULT_API_KEY = 'P40o1xL0dcN2sgTw4WktX985h77ieF5SP84cQTb0m4sjvg60ideAjSsDrCqyCpZC';
 
 let cachedConfig = null;
-let fingerprintClient = null;
+let fingerprintPlugin = null;
 let libraryLoadAttempted = false;
 
 function loadConfig() {
@@ -40,67 +40,81 @@ function resolveApiKey() {
   return null;
 }
 
-async function ensureFingerprintClient(apiKey) {
-  if (fingerprintClient || libraryLoadAttempted) {
-    return fingerprintClient;
+async function ensureFingerprintPlugin(apiKey) {
+  if (fingerprintPlugin || libraryLoadAttempted) {
+    return fingerprintPlugin;
   }
   libraryLoadAttempted = true;
   try {
     const mod = await import('playwright-with-fingerprints');
-    const Constructor =
-      mod?.default || mod?.PlaywrightWithFingerprints || mod?.FingerprintSwitcher || null;
-    if (!Constructor) {
-      console.warn('[fingerprint] playwright-with-fingerprints module loaded but no constructor found');
+    const plugin = mod?.plugin || mod?.default?.plugin || null;
+    if (!plugin) {
+      console.warn('[fingerprint] playwright-with-fingerprints module loaded but no plugin found');
       return null;
     }
-    const config = loadConfig();
-    const clientOptions = config.clientOptions || {};
-    fingerprintClient = new Constructor({ token: apiKey, ...clientOptions });
-    return fingerprintClient;
+    // Set the service key (API key)
+    if (apiKey) {
+      plugin.setServiceKey(apiKey);
+    }
+    fingerprintPlugin = plugin;
+    return fingerprintPlugin;
   } catch (error) {
     console.warn('[fingerprint] Unable to load playwright-with-fingerprints, falling back to default context:', error.message);
     return null;
   }
 }
 
-export async function launchFingerprintContext({ profileDir, launchOptions, contextOptions }) {
+export async function launchFingerprintContext({ profileDir, launchOptions }) {
   const apiKey = resolveApiKey();
   if (!apiKey) {
     return null;
   }
 
-  const client = await ensureFingerprintClient(apiKey);
-  if (!client) {
+  const plugin = await ensureFingerprintPlugin(apiKey);
+  if (!plugin) {
     return null;
   }
 
   const config = loadConfig();
-  const fingerprintOptions = config.fingerprintOptions || {};
-  const finalLaunchOptions = {
-    headless: launchOptions?.headless ?? false,
-    args: launchOptions?.args || [],
-    userDataDir: profileDir,
-    ...(config.launchOptions || {}),
-  };
-  const finalContextOptions = {
-    ...contextOptions,
-    ...(config.contextOptions || {}),
-  };
+  const fingerprintTags = config.fingerprintOptions?.tags || ['Microsoft Windows', 'Chrome'];
 
   try {
-    const result = await client.launch({
-      launchOptions: finalLaunchOptions,
-      contextOptions: finalContextOptions,
-      fingerprintOptions,
+    // Fetch a fingerprint with specified tags
+    const fingerprint = await plugin.fetch({
+      tags: fingerprintTags,
     });
-    if (!result || !result.context) {
-      console.warn('[fingerprint] Fingerprint service did not return a context, using default');
+
+    if (!fingerprint) {
+      console.warn('[fingerprint] Failed to fetch fingerprint, using default context');
       return null;
     }
+
+    // Apply the fingerprint
+    plugin.useFingerprint(fingerprint);
+
+    // Launch with the fingerprint applied
+    const browser = await plugin.launch({
+      headless: launchOptions?.headless ?? false,
+      args: launchOptions?.args || [],
+      userDataDir: profileDir,
+      ...(config.launchOptions || {}),
+    });
+
+    if (!browser) {
+      console.warn('[fingerprint] Browser launch failed, using default context');
+      return null;
+    }
+
+    // Get the default context and page
+    const context = browser.contexts()[0];
+    const pages = context.pages();
+    const page = pages.length > 0 ? pages[0] : await context.newPage();
+
     return {
-      context: result.context,
-      page: result.page || null,
-      fingerprint: result.fingerprint || null,
+      browser,
+      context,
+      page,
+      fingerprint,
     };
   } catch (error) {
     console.warn('[fingerprint] Fingerprint launch failed, using default context:', error.message);

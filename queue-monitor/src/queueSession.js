@@ -17,6 +17,7 @@ export class QueueSession extends EventEmitter {
     this.label = config.label || config.id;
     this.queueUrl = config.queueUrl;
     this.sourceUrl = config.sourceUrl || null;
+    this.browser = null;
     this.context = null;
     this.page = null;
     this.state = {
@@ -74,6 +75,7 @@ export class QueueSession extends EventEmitter {
       });
 
       if (fingerprintResult?.context) {
+        this.browser = fingerprintResult.browser || null;
         this.context = fingerprintResult.context;
         const [existingPage] = this.context.pages();
         this.page = fingerprintResult.page
@@ -82,6 +84,7 @@ export class QueueSession extends EventEmitter {
         this.fingerprintInfo = fingerprintResult.fingerprint ?? null;
         this.updateState({ fingerprintActive: true, fingerprintInfo: this.fingerprintInfo });
       } else {
+        this.browser = null;
         this.context = await chromium.launchPersistentContext(this.profileDir, {
           ...baseContextOptions,
           ...baseLaunchOptions,
@@ -503,6 +506,10 @@ export class QueueSession extends EventEmitter {
     if (this.context) {
       await this.context.close().catch(() => {});
       this.context = null;
+    }
+    if (this.browser) {
+      await this.browser.close().catch(() => {});
+      this.browser = null;
     }
     this.updateState({ status: 'stopped', message: 'Session disposed' });
   }

@@ -25,10 +25,12 @@ Sessions do not auto-start—you decide when to launch them from the UI. Each ne
 
 ### Fingerprint service (optional)
 
-- Install [`playwright-with-fingerprints`](https://github.com/bablosoft/playwright-with-fingerprints) alongside the existing dependencies.
-- The dashboard now ships with the fingerprint API key baked in (`P40o1xL0dcN2sgTw4WktX985h77ieF5SP84cQTb0m4sjvg60ideAjSsDrCqyCpZC`), so you can run it with no extra environment setup. Set `FINGERPRINT_API_KEY` (or related variables) only if you want to override the bundled key.
-- (Optional) Copy `fingerprint.config.example.json` to `fingerprint.config.json` and tweak `fingerprintOptions`, `launchOptions`, and `contextOptions` to match the profiles you want to emulate.
-- When the key is present and the library is installed, each session launches with a fresh fingerprint; otherwise the watcher falls back to stock Playwright Chromium.
+- Install [`playwright-with-fingerprints`](https://github.com/bablosoft/playwright-with-fingerprints) alongside the existing dependencies: `npm install playwright-with-fingerprints`
+- The dashboard ships with the fingerprint API key baked in (`P40o1xL0dcN2sgTw4WktX985h77ieF5SP84cQTb0m4sjvg60ideAjSsDrCqyCpZC`), so you can run it with no extra environment setup. Set `FINGERPRINT_API_KEY` (or related variables) only if you want to override the bundled key.
+- (Optional) Copy `fingerprint.config.example.json` to `fingerprint.config.json` and customize:
+  - `fingerprintOptions.tags`: Array of tags for fingerprint selection (default: `['Microsoft Windows', 'Chrome']`)
+  - `launchOptions`: Additional Playwright browser launch options
+- When the library is installed and the API key is present, each session fetches and applies a fresh fingerprint from the service; otherwise the watcher falls back to stock Playwright Chromium.
 
 ### Dashboard controls
 
