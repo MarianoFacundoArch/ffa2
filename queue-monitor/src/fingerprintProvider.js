@@ -96,7 +96,6 @@ export async function launchFingerprintContext({ profileDir, launchOptions }) {
     const browser = await plugin.launch({
       headless: launchOptions?.headless ?? false,
       args: launchOptions?.args || [],
-      userDataDir: profileDir,
       ...(config.launchOptions || {}),
     });
 
@@ -105,10 +104,11 @@ export async function launchFingerprintContext({ profileDir, launchOptions }) {
       return null;
     }
 
-    // Get the default context and page
-    const context = browser.contexts()[0];
-    const pages = context.pages();
-    const page = pages.length > 0 ? pages[0] : await context.newPage();
+    // Create a new context and page
+    const context = await browser.newContext({
+      viewport: { width: 1280, height: 720 },
+    });
+    const page = await context.newPage();
 
     return {
       browser,
