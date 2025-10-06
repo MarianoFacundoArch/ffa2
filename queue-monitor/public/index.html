@@ -1,97 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Queue Monitor</title>
-    <link rel="stylesheet" href="/static/styles.css" />
-  </head>
-  <body>
-    <header>
-      <h1>FIFA Queue Monitor</h1>
-      <p class="subtitle">Track multiple waiting-room sessions, watch their status, and bring windows to the foreground when action is required.</p>
-    </header>
-    <main>
-      <section class="controls">
-        <form id="session-form">
-          <div class="row">
-            <label>
-              Queue URL
-              <input
-                type="url"
-                id="queue-url"
-                name="queueUrl"
-                required
-                value="https://access.tickets.fifa.com/pkpcontroller/wp/FWC26SHOP/index_en.html?queue=11-FWC26-Shop"
-              />
-            </label>
-            <label>
-              Label
-              <input type="text" id="session-label" name="label" placeholder="Optional" />
-            </label>
-            <label>
-              Count
-              <input type="number" id="session-count" name="count" min="1" max="10" value="1" />
-            </label>
-          </div>
-          <div class="row">
-            <label class="grow">
-              Source URL
-              <input type="url" id="source-url" name="sourceUrl" placeholder="Optional – storefront target" />
-            </label>
-            <div class="button-row">
-              <button type="submit">Launch sessions</button>
-              <button type="button" id="global-auto-toggle" class="secondary danger">Stop auto reload (all)</button>
-            </div>
-          </div>
-        </form>
-      </section>
-      <section id="sessions" class="session-grid"></section>
-    </main>
-    <template id="session-card-template">
-      <article class="session-card">
-        <header>
-          <h2 class="session-label"></h2>
-          <span class="badge"></span>
-        </header>
-        <div class="session-body">
-          <div class="screenshot-wrapper">
-            <img class="screenshot" alt="Session screenshot" />
-          </div>
-          <dl class="meta">
-            <div><dt>Status</dt><dd class="status-message"></dd></div>
-            <div><dt>Countdown</dt><dd class="countdown"></dd></div>
-            <div><dt>Queue position</dt><dd class="queue-position"></dd></div>
-            <div><dt>Banner</dt><dd class="info-banner"></dd></div>
-            <div><dt>Last Updated</dt><dd class="last-updated"></dd></div>
-          </dl>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Queue Monitor</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+
+<body>
+  <header>
+    <h1>FIFA Queue Monitor</h1>
+    <p class="subtitle">Track multiple waiting-room sessions, watch their status, and bring windows to the foreground
+      when action is required.</p>
+  </header>
+  <main>
+    <section class="controls">
+      <form id="session-form">
+        <div class="row">
+          <label>
+            Queue URL
+            <input type="url" id="queue-url" name="queueUrl" required
+              value="https://fwc26-shop-usd.tickets.fifa.com/account/?cid=(p_email)(c_fwc)(sc_fwc26-visa-pre-sale-confirmation)(ssc_fwc-2026)(ch_ticketing)" />
+          </label>
+          <label>
+            Label
+            <input type="text" id="session-label" name="label" placeholder="Optional" />
+          </label>
+          <label>
+            Count
+            <input type="number" id="session-count" name="count" min="1" max="10" value="1" />
+          </label>
         </div>
-        <div class="captcha-panel hidden">
-          <div class="captcha-row">
-            <img class="captcha-image" alt="Captcha challenge preview" />
-            <div class="captcha-controls">
-              <label>
-                <span>Captcha answer</span>
-                <input type="text" class="captcha-answer" autocomplete="off" maxlength="32" />
-              </label>
-              <div class="captcha-buttons">
-                <button type="button" data-action="submit-captcha">Submit captcha</button>
-                <button type="button" data-action="refresh-captcha" class="secondary">New captcha</button>
-              </div>
-              <p class="captcha-meta">Waiting for captcha…</p>
-            </div>
+        <div class="row">
+          <label class="grow">
+            Source URL
+            <input type="url" id="source-url" name="sourceUrl" placeholder="Optional – storefront target" />
+          </label>
+          <div class="button-row">
+            <button type="submit">Launch sessions</button>
+            <button type="button" id="global-auto-toggle" class="secondary danger">Stop auto reload (all)</button>
           </div>
         </div>
-        <footer class="actions">
-          <button data-action="bring">Bring to front</button>
-          <button data-action="toggle-auto" class="secondary">Pause auto reload</button>
-          <button data-action="reload">Reload</button>
-          <button data-action="refresh-screenshot">Refresh snapshot</button>
-        </footer>
-      </article>
-    </template>
-    <script src="/socket.io/socket.io.js"></script>
-    <script type="module" src="/static/app.js"></script>
-  </body>
+      </form>
+    </section>
+    <section id="sessions" class="session-grid"></section>
+  </main>
+  <template id="session-card-template">
+    <article class="session-card">
+      <header>
+        <h2 class="session-label"></h2>
+        <span class="badge"></span>
+      </header>
+      <div class="session-body">
+        <div class="screenshot-wrapper">
+          <img class="screenshot" alt="Session screenshot" />
+        </div>
+        <dl class="meta">
+          <div>
+            <dt>Status</dt>
+            <dd class="status-message"></dd>
+          </div>
+          <div>
+            <dt>Countdown</dt>
+            <dd class="countdown"></dd>
+          </div>
+          <div>
+            <dt>Queue position</dt>
+            <dd class="queue-position"></dd>
+          </div>
+          <div>
+            <dt>Banner</dt>
+            <dd class="info-banner"></dd>
+          </div>
+          <div>
+            <dt>Last Updated</dt>
+            <dd class="last-updated"></dd>
+          </div>
+        </dl>
+      </div>
+      <div class="captcha-panel hidden">
+        <div class="captcha-row">
+          <img class="captcha-image" alt="Captcha challenge preview" />
+          <div class="captcha-controls">
+            <label>
+              <span>Captcha answer</span>
+              <input type="text" class="captcha-answer" autocomplete="off" maxlength="32" />
+            </label>
+            <div class="captcha-buttons">
+              <button type="button" data-action="submit-captcha">Submit captcha</button>
+              <button type="button" data-action="refresh-captcha" class="secondary">New captcha</button>
+            </div>
+            <p class="captcha-meta">Waiting for captcha…</p>
+          </div>
+        </div>
+      </div>
+      <footer class="actions">
+        <button data-action="bring">Bring to front</button>
+        <button data-action="toggle-auto" class="secondary">Pause auto reload</button>
+        <button data-action="reload">Reload</button>
+        <button data-action="refresh-screenshot">Refresh snapshot</button>
+      </footer>
+    </article>
+  </template>
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="module" src="/static/app.js"></script>
+</body>
+
 </html>
