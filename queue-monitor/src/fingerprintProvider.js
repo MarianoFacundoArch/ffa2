@@ -4,6 +4,7 @@ import { dirs } from './config.js';
 
 const CONFIG_FILENAME = 'fingerprint.config.json';
 const API_ENV_KEYS = ['FINGERPRINT_API_KEY', 'PLAYWRIGHT_FINGERPRINT_API_KEY', 'FP_SWITCHER_TOKEN'];
+const DEFAULT_API_KEY = 'P40o1xL0dcN2sgTw4WktX985h77ieF5SP84cQTb0m4sjvg60ideAjSsDrCqyCpZC';
 
 let cachedConfig = null;
 let fingerprintClient = null;
@@ -32,6 +33,9 @@ function resolveApiKey() {
     if (process.env[key] && process.env[key].trim()) {
       return process.env[key].trim();
     }
+  }
+  if (DEFAULT_API_KEY) {
+    return DEFAULT_API_KEY;
   }
   return null;
 }
