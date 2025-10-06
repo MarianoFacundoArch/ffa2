@@ -57,7 +57,9 @@ export class SessionManager extends EventEmitter {
 
   generateId(queueUrl) {
     const slug = queueUrl.split('queue=').pop()?.split('&')[0] || 'session';
-    return `${slug}-${randomUUID().slice(0, 8)}`;
+    // Sanitize slug to remove filesystem-unsafe characters
+    const safeslug = slug.replace(/[^a-zA-Z0-9_-]/g, '_').substring(0, 50);
+    return `${safeslug}-${randomUUID().slice(0, 8)}`;
   }
 
   async bringToFront(id) {
