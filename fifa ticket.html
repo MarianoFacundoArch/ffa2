@@ -1,0 +1,771 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0102)https://access.tickets.fifa.com/pkpcontroller/wp/FWC26LOTTERY/index_en.html?queue=10-FWC26-LotteryFCFS -->
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" data-qb-installed="true"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, maximum-scale=1.0">
+<title>Waiting Room</title>
+
+<link rel="shortcut icon" href="https://access.tickets.fifa.com/pkpcontroller/wp/FWC26LOTTERY/resources/favicon.ico">
+<style type="text/css">
+@font-face{font-family:"AvenirLight";src:url("./resources/webfonts/Avenir-Light.eot");src:url("./resources/webfonts/Avenir-Light.eot?#iefix") format("embedded-opentype"),url("./resources/webfonts/Avenir-Light.woff") format("woff"),url("./resources/webfonts/Avenir-Light.ttf") format("truetype"),url("./resources/webfonts/Avenir-Light.svg#Avenir-Light") format("svg");font-weight:normal;font-style:normal}
+@font-face{font-family:"Inter-Regular";src:url("./resources/webfonts/Inter-Regular.ttf");font-weight:normal;font-style:normal}@font-face{font-family:"Inter-Bold";src:url("./resources/webfonts/Inter-Bold.ttf");font-weight:bold;font-style:normal}
+:root{--main-color:#a10440;--language-selector-color:#dee4eb;--language-selector-color-over:#92969b;--text-color:#141414}body{align-items:center;background:url("./resources/background_pkp.png");background-size:cover;display:flex;flex-direction:column-reverse;font-family:"AvenirLight",Helvetica,Arial,sans-serif;min-height:100vh;justify-content:center;margin:auto;padding:var(--space-s);font-size:var(--font-sizes-body);line-height:var(--line-heights-body);font-weight:var(--font-weights-normal)}
+h1{display:block;font-size:2em;font-weight:bold;margin-block-end:.67em;margin-block-start:.67em;margin-inline-end:0;margin-inline-start:0}a:link{text-decoration:underline}a{color:var(--text-color);cursor:pointer;text-decoration:underline}
+#titre{color:var(--text-color);flex:none;flex-grow:0;font-family:"Inter-Bold";font-feature-settings:"tnum" on,"lnum" on;font-size:28px;font-style:normal;font-weight:700;height:auto;letter-spacing:.223962px;line-height:32px;margin:0;margin-bottom:10px;order:0;padding-inline:40px;text-align:center}
+#intro{color:var(--text-color);font-family:"Inter-Regular";font-feature-settings:"tnum" on,"lnum" on;font-style:bold;font-size:14px;font-weight:400;line-height:18px;letter-spacing:.223962px;order:3;padding-inline:40px;text-align:center}
+#message{align-self:stretch;color:var(--text-color);flex-grow:0;font-family:"Inter-Regular";font-feature-settings:"tnum" on,"lnum" on;font-style:normal;font-size:14px;font-weight:600;letter-spacing:.223962px;line-height:18px;order:4;padding:0 12px 10px;text-align:center}
+#info{color:#002c61;background-color:#d6ebff;box-sizing:border-box;flex:none;font-family:"Inter-Regular";font-feature-settings:"tnum" on,"lnum" on;font-size:14px;font-style:normal;font-weight:600;letter-spacing:.223962px;order:2;height:auto;padding:10px 40px;text-align:center;width:100%}
+#message_wait{align-items:center;color:var(--text-color);display:flex;justify-content:center;font-family:"Inter-Regular";font-size:14px;line-height:18px}#queuePositionGroup{align-items:center;display:flex;font-family:"Inter-Regular";font-size:14px;justify-content:center;line-height:18px}
+#error{background-color:#f3bdbd;box-sizing:border-box;color:#6a100c;display:none;flex:none;font-family:"Inter-Regular";font-feature-settings:"tnum" on,"lnum" on;font-style:normal;font-size:14px;font-weight:600;height:auto;letter-spacing:.223962px;order:1;padding:10px 40px;text-align:center;width:100%}
+#interface{display:flex;flex-direction:column;padding-inline:40px;order:4;text-align:center}.actionmsg{align-items:center;display:flex;font-family:"Inter-Regular";font-size:14px;font-weight:bold;justify-content:center;line-height:18px;order:1}
+#action{align-items:center;display:none;flex-direction:column;gap:12px;grid-area:action;justify-content:center}#actionButtonSpan{align-items:center;background:var(--main-color);border-radius:8px;display:flex;flex-direction:row;height:44px;justify-content:center;order:2;text-align:center;width:326px}
+#actionButton{color:#fff;font-family:"Inter-Regular";font-size:12px;font-style:normal;font-weight:600;line-height:14px}#actionText{font-family:"Inter-Regular";font-size:14px;order:3;line-height:18px}
+#waitdiv{position:relative;display:none}#waittimer{display:flex;position:absolute;margin:auto;top:50%;left:50%;width:100%;z-index:1;justify-content:center;align-items:center;flex-direction:column;gap:10px;transform:translate(-50%,-45%)}
+#wait{font-size:36px}#waittimer_labels{display:flex;align-items:center;font-size:14px;color:var(--text-color);line-height:18px;font-family:"Inter-Regular";gap:25px}#PBouter{display:flex;background:#fff;flex-direction:column;align-items:center;position:relative}
+#PBdone{position:relative}.btnColor1,.btnColor1 a,.btnColor1 a:visited,.btnColor1 a:hover,.btnColor1 a:link,#menu .btnColor1 label{font-weight:bold;text-decoration:none;white-space:nowrap}.btnColor1{height:14px;justify-content:center;font-weight:400;font-size:12px;line-height:14px;text-align:center;letter-spacing:.223962px;font-feature-settings:"tnum" on,"lnum" on;flex:none;order:0;flex-grow:0}
+#secret{padding:3px;border-radius:8px;width:120px}#submit_button{display:flex;flex-direction:row;justify-content:center;align-items:center;padding:5px;gap:8px;background:var(--main-color);border-radius:8px;cursor:pointer}
+#form_input_buttons{span{a{color:#fff}}}#action_answer{display:none}#form_captcha{display:flex;align-items:center;justify-content:center;gap:40px}#captcha{display:none;text-align:center;order:6}#img_captcha_container,#form_container,#form_input_buttons,#action_answer{display:inline-block;vertical-align:top}
+#img_captcha{margin-bottom:10px}#captcha .btnColor1{display:block}#form_input_buttons>input,#form_input_buttons>span{margin:2px 0}#action_answer{padding-top:.7em}#newcaptcha_button img,#newcaptcha_button span{vertical-align:middle}
+#catpcha_refresh{padding-right:5px}#newcaptcha_button_text{color:#699;font-weight:bold}#newcaptcha_button a{text-decoration:none}#menu{background-color:white;padding:20px 32px 16px;border-radius:40px;display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;margin-inline:10px}
+#menu:empty{display:none}#menu .btnColor1 input{display:bottom;margin:0}#menu .btnColor1{display:inline-block}.wrtop{display:none}.wrbottom{display:none}p{margin:0}#footer{background:url(resources/background_pkp.png) no-repeat scroll top transparent;background-color:#eef3f8;border-bottom-left-radius:20px;border-bottom-right-radius:20px;display:flex;justify-content:center;order:6;padding:15px 0 40px 0;width:100%}
+#logo{background-image:url(resources/fwc26logo.png);background-position:center;background-repeat:no-repeat,repeat;background-size:contain;height:100px;object-fit:cover;max-height:100px;margin-bottom:20px;width:80%}
+#page{display:flex;flex-direction:column;align-items:center;padding:40px 0 0 0;width:50vw;height:auto;background:#fff;border-radius:20px;max-width:436px;min-width:350px}#waitingroom{grid-area:waitingroom;display:flex;flex-direction:column;align-items:center;gap:12px}
+#languages{font-size:1em;grid-area:languages;display:flex;justify-content:center;width:100%;background-color:#eef3f8;padding:15px 0;margin-top:36px}#languages .langlink,#languages .langcurrent{display:inline-block;padding:4px;color:var(--text-color);text-decoration:none}
+#languages .langcurrent{color:grey}#sponsorZone1{display:none;float:right;padding:10px;background-color:#eef3f8}#sponsorZone2{display:none;float:right;padding:10px;background-color:#eef3f8}.clear{display:none}
+.languages_selectContent{display:flex}.languages_dropbtn{background-color:var(--language-selector-color);color:var(--text-color);height:44px;min-width:100px;width:auto;font-size:14px;border:0;cursor:pointer;border-radius:4px;display:flex;align-items:center;justify-content:center}
+.languages_dropbtn:hover{background-color:var(--language-selector-color-over)}.languages_dropbtn img{margin-left:14px}.languages_dropdown{position:relative;display:inline-block}.languages_dropdown-content{display:none;position:absolute;background-color:#f1f1f1;min-width:140px;height:100px;overflow:auto;box-shadow:0 0 3px 0 rgba(0,0,0,0.5);z-index:1;margin-top:50px;border-radius:5px}
+.languages_dropdown-content a{color:var(--text-color);padding:5px;text-decoration:none;display:block}.languages_dropdown-content a:hover{background-color:#ddd}.languages_dropdown a:hover{background-color:#ddd}
+.languages_show{display:block}#languagesDropdownButtonWithIconLabel{padding:10px}#languagesDropdownButtonWithIconLabel{margin-right:4px}#outro{display:none;padding-inline:40px}#spinner{width:208px;height:208px;position:relative}
+.dot{animation:bounce 4s infinite ease-in-out;background:var(--main-color);height:10px;border-radius:50%;position:absolute;width:10px}@keyframes bounce{0%,100%{transform:scale(0.5);opacity:.25}50%{transform:scale(2.5);opacity:1}
+}.dot:nth-child(1){animation-delay:-2s;top:104px;left:163px}.dot:nth-child(2){animation-delay:-1.5s;top:147.2540983609773px;left:147.2540983609773px}.dot:nth-child(3){animation-delay:-1s;top:163px;left:104px}
+.dot:nth-child(4){animation-delay:-0.5s;top:147.2540983609773px;left:60.7459016390227px}.dot:nth-child(5){animation-delay:0s;top:104px;left:45px}.dot:nth-child(6){animation-delay:.5s;top:60.7459016390227px;left:60.7459016390227px}
+.dot:nth-child(7){animation-delay:1s;top:45px;left:103.99999999999999px}.dot:nth-child(8){animation-delay:1.5s;top:60.7459016390227px;left:147.2540983609773px}@media screen and (max-width:600px){#menu{display:none}
+#page{padding:20px 0 0 0}#footer{padding:15px 0 20px 0}#languages{margin-top:20px}}</style>
+<script async="" src="./fifa ticket_files/gtm.js"></script><script async="" src="./fifa ticket_files/tags.js"></script><script type="text/javascript">
+var langcode = "en";
+var language = new Array();
+language["titre"] = "<p><strong>Almost there…</p></strong>";
+language["intro"] = "";
+language["outro"] = "";
+
+language["titre_authreq"] = "<p><strong>Almost there…</p></strong><p>"
+language["intro_authreq"] = "<p>Thank you for waiting to enter the Visa Presale Draw for the FIFA World Cup 26™.</p>" 
+language["outro_authreq"] = language["outro"];
+
+language["titre_admission"] = language["titre"];
+language["intro_admission"] = "<p><strong>Ready to access?<p><br><br>Thank you for waiting.</p><br><br><p>Please note that you have 5 minutes to access. If you do not click ‘ENTER’ within this time frame, you will lose your place in the queue.</strong></p>"
+language["outro_admission"] = language["outro"];
+
+language["titre_pause"] = "<p><strong>FIFA World Cup 26™ Visa Presale Draw </p></strong>";
+language["intro_pause"] = "<p>Thank you for waiting to enter the Visa Presale Draw for the FIFA World Cup 26™. Customers will be admitted to enter the Visa Presale Draw for a chance to purchase tickets (at a later stage, if successfully drawn) on a first-come, first-served basis, which means that you may not have access immediately.</p><br><p>Once the entry window is open, we will inform you about the specific waiting time to enter the Visa Presale Draw.</p><br><p>Please note that you have 5 minutes to access after you have been placed in the queue. If you do not click 'ENTER' within this time frame, you will lose your place.</p><br><p><strong> The Visa Presale Draw will determine which customers will be invited to purchase tickets at a later stage, on a first-come, first-served basis (subject to availability).</p><br></strong><p><strong>The results of the draw will be announced no earlier than 29 September 2025. Successful applicants will be assigned a specific date and time slot to purchase tickets on a first-come, first-served basis (subject to availability).</p><br></strong><p><strong>Please note: In order to enter the draw, you must be the cardholder (primary or secondary) in good standing of a valid, unexpired Visa debit card, credit card, or reloadable prepaid card enabled with 3D Secure.</p><br></strong><p>For more information, please visit <a href='https://www.fifa.com/en/tickets' target='_blank'>FIFA.com/tickets</a>.</p>";
+language["outro_pause"] = language["outro"];
+
+language["message_opening1"] = "THE VISA PRESALE TICKET DRAW ENTRY PERIOD WILL OPEN SOON";
+language["message_waittime"] =
+  "<p>Thank you for waiting to enter the Visa Presale Draw for the FIFA World Cup 26™. When you are closer to your entry time, a countdown will appear before you can enter the Visa Presale Draw. Once the countdown is over, an 'ENTER' button will be available for 5 minutes; click it to access.<strong> Please check the progress of the queue regularly to avoid missing your chance to access and enter the Visa Presale Draw.<p><br><p>Please do not refresh or leave this page; otherwise, you may lose your position in the queue.</p><br></strong><p><strong> The Visa Presale Draw will determine which customers will be invited to purchase tickets at a later stage, on a first-come, first-served basis (subject to availability).</p><br></strong><p><strong>The results of the draw will be announced no earlier than 29 September 2025. Successful applicants will be assigned a specific date and time slot purchase tickets on a first-come, first-served basis (subject to availability).</p><br></strong><p><strong>Please note: In order to enter the draw, you must be the cardholder (primary or secondary) in good standing of a valid, unexpired Visa debit card, credit card, or reloadable prepaid card enabled with 3D Secure.</p></strong>";
+
+language["message_captcha"] = "<p>If you would like to join the queue, please enter the characters you see in the image below and click on 'SUBMIT'.</p>"
+language["message_opening2"] = ".";
+language["message_longwait"] = "Your progress in the queue to enter the Ticketing Portal is shown below. " ;
+  
+language["message_wait"] = "You will be able to enter the Ticketing Portal in....";
+language["message_minwait"] = "<p><strong>Almost there…</p></strong> <p><p><p>We are currently receiving a high volume of requests. You can choose to wait or come back later. If you decide to wait, we will give you the opportunity to access and enter the Visa Presale Draw for the FIFA World Cup 26™ as soon as possible.</p><p><strong> The Visa Presale Draw will determine which customers will be invited to purchase tickets at a later stage, on a first-come, first-served basis (subject to availability).</p></strong><p><strong>The results of the draw will be announced no earlier than 29 September 2025. Successful applicants will be assigned a specific date and time slot to purchase tickets on a first-come, first-served basis (subject to availability).</p></strong><p><strong>Please note: In order to enter the draw, you must be the cardholder (primary or secondary) in good standing of a valid, unexpired Visa debit card, credit card, or reloadable prepaid card enabled with 3D Secure.</p></strong>" 
+language["message_pause"] = "The waiting room is temporarily unavailable.";
+language["message_admission"] = "<p><strong>Important:</strong> you will not be automatically redirected to enter the Visa Presale Draw.</p><br><br><p>To access and enter the Visa Presale Draw, click on 'ENTER'</p>"
+  "You can now enter the website by clicking on the link below.";
+language["message_reload"] =
+  "To enter the waiting room again, please click on the link below.";
+
+language["message_sec"] = "sec.";
+language["message_min"] = "min.";
+language["message_hour"] = "hour";
+
+language["message_position"] = "Position in queue:";
+
+language["action_answer"] = "Characters:";
+language["action_submit"] = "SUBMIT";
+language["action_newcaptcha"] = "New captcha";
+language["action_link"] = "Enter";
+language["action_admission"] =
+language["action_reload"] = "Reload the page";
+
+language["message_pauseopening1"] = "The website will be available from ";
+language["message_pauseopening2"] = 
+language["message_opening2"];
+
+language["error_captcha"] = "The entered value is incorrect.";
+language["error_captcha_reset"] =
+  "Your captcha is out-of-date. Thank you for re-trying.";
+language["error_cookie"] =
+  "Please check that your navigator allows cookies and then restart it.";
+language["error_technical"] = "<p><strong>Maintenance underway – We will be back soon!</p></strong>.";
+language["error_connection"] =
+  "<p>We are currently performing scheduled maintenance to improve your experience. We will be back shortly.</p><p>Thank you for your understanding.</p>";
+language["error_timeout"] = "Your waiting ticket is out-of-date.";
+language["error_user"] = "Error.";
+language["error_browser"] = "Your browser is not supported. Please use IE 6.x or later, Firefox 2.x or later";
+language['error_xss']     = "An XSS attack attempt has been detected. Close this screen and return to the store.";
+</script>
+<script type="text/javascript">
+var JSON;if(!JSON){JSON={}}(function(){function f(n){return n<10?"0"+n:n}if(typeof Date.prototype.toJSON!=="function"){Date.prototype.toJSON=function(key){return isFinite(this.valueOf())?this.getUTCFullYear()+"-"+f(this.getUTCMonth()+1)+"-"+f(this.getUTCDate())+"T"+f(this.getUTCHours())+":"+f(this.getUTCMinutes())+":"+f(this.getUTCSeconds())+"Z":null
+};String.prototype.toJSON=Number.prototype.toJSON=Boolean.prototype.toJSON=function(key){return this.valueOf()}}var cx=/[\u0000\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,escapable=/[\\\"\x00-\x1f\x7f-\x9f\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,gap,indent,meta={"\b":"\\b","\t":"\\t","\n":"\\n","\f":"\\f","\r":"\\r",'"':'\\"',"\\":"\\\\"},rep;
+function quote(string){escapable.lastIndex=0;return escapable.test(string)?'"'+string.replace(escapable,function(a){var c=meta[a];return typeof c==="string"?c:"\\u"+("0000"+a.charCodeAt(0).toString(16)).slice(-4)
+})+'"':'"'+string+'"'}function str(key,holder){var i,k,v,length,mind=gap,partial,value=holder[key];if(value&&typeof value==="object"&&typeof value.toJSON==="function"){value=value.toJSON(key)}if(typeof rep==="function"){value=rep.call(holder,key,value)
+}switch(typeof value){case"string":return quote(value);case"number":return isFinite(value)?String(value):"null";case"boolean":case"null":return String(value);case"object":if(!value){return"null"}gap+=indent;
+partial=[];if(Object.prototype.toString.apply(value)==="[object Array]"){length=value.length;for(i=0;i<length;i+=1){partial[i]=str(i,value)||"null"}v=partial.length===0?"[]":gap?"[\n"+gap+partial.join(",\n"+gap)+"\n"+mind+"]":"["+partial.join(",")+"]";
+gap=mind;return v}if(rep&&typeof rep==="object"){length=rep.length;for(i=0;i<length;i+=1){if(typeof rep[i]==="string"){k=rep[i];v=str(k,value);if(v){partial.push(quote(k)+(gap?": ":":")+v)}}}}else{for(k in value){if(Object.prototype.hasOwnProperty.call(value,k)){v=str(k,value);
+if(v){partial.push(quote(k)+(gap?": ":":")+v)}}}}v=partial.length===0?"{}":gap?"{\n"+gap+partial.join(",\n"+gap)+"\n"+mind+"}":"{"+partial.join(",")+"}";gap=mind;return v}}if(typeof JSON.stringify!=="function"){JSON.stringify=function(value,replacer,space){var i;
+gap="";indent="";if(typeof space==="number"){for(i=0;i<space;i+=1){indent+=" "}}else{if(typeof space==="string"){indent=space}}rep=replacer;if(replacer&&typeof replacer!=="function"&&(typeof replacer!=="object"||typeof replacer.length!=="number")){throw new Error("JSON.stringify")
+}return str("",{"":value})}}if(typeof JSON.parse!=="function"){JSON.parse=function(text,reviver){var j;function walk(holder,key){var k,v,value=holder[key];if(value&&typeof value==="object"){for(k in value){if(Object.prototype.hasOwnProperty.call(value,k)){v=walk(value,k);
+if(v!==undefined){value[k]=v}else{delete value[k]}}}}return reviver.call(holder,key,value)}text=String(text);cx.lastIndex=0;if(cx.test(text)){text=text.replace(cx,function(a){return"\\u"+("0000"+a.charCodeAt(0).toString(16)).slice(-4)
+})}if(/^[\],:{}\s]*$/.test(text.replace(/\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4})/g,"@").replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g,"]").replace(/(?:^|:|,)(?:\s*\[)+/g,""))){j=eval("("+text+")");
+return typeof reviver==="function"?walk({"":j},""):j}throw new SyntaxError("JSON.parse")}}}());</script>
+<script type="text/javascript">
+var REVISION="$Revision: 1120 $";var COOKIE_TTL=3600;var COOKIE_MAX_LENGTH=4000;var MS_IN_S=1000;var MAX_POLL_FREQ=300;var MIN_POLL_FREQ=10;var RETRY_PERIOD=30;var DEFAULT_TIME=10;var DELAY=200;var PROGRESS_WAIT_THRESHOLD=5;
+var MIN_WAIT_TIME=5;var MIN_WAIT_TIME_THRESHOLD=30;var LONG_WAIT_TIME=900;var URL_CONTROLLER="/pkpcontroller/servlet.do";var URL_CAPTCHA="/pkpcontroller/captcha.png";var URL_SELECT="/pkpcontroller/selectqueue.do";
+var PB_INCR_MS=MS_IN_S;var URL_CONTENT_BASE="/pkpcontroller/message/";var URL_CONTENT_FILE="_info.txt";var INFO_REFRESH_MS=60000;var COOKIE_QUEUEINFO="WR_queueinfo-";var COOKIE_SOURCE="WR_source-";var COOKIE_CT="WR-CT";
+var AT_PREFIX="AcpAT-v3-";var COOKIE_FFRT="WR-FFRT";var wr_queue=null;var admissionInfo=null;var wr_error="null";var sourceUrl=null;var queueinfo=null;var timerControllerRequest=null;var timerWatchdog=null;
+var timerProgress=null;var timerInfoRefresh=null;var lastCall=new Date();var showInClockFormat=false;var timeoutId=null;function now(){return(new Date()).getTime()}function getText(label){return language[label]
+}function show(zone){if(zone==="info"&&document.getElementById(zone).innerHTML.length<=0){return}document.getElementById(zone).style.display="block"}function hide(zone){document.getElementById(zone).style.display="none"
+}function clear(zone){document.getElementById(zone).innerHTML=""}function display(zone,msg){document.getElementById(zone).innerHTML=msg;show(zone)}function getTextForError(err){var textForError=getText("error_"+err);
+if("xss"===err&&(textForError===undefined||textForError===null||textForError==="")){textForError="An XSS attack attempt has been detected. Close this screen and return to the store."}return textForError
+}function showError(err){if(err!=="null"){wr_error=err;display("error",getTextForError(err));var title_key="titre";var intro_key="intro";var outro_key="outro";if("titre_error" in language){title_key="titre_error"
+}if("intro_error" in language){intro_key="intro_error"}if("outro_error" in language){outro_key="outro_error"}document.getElementById("titre").innerHTML=getText(title_key);document.getElementById("intro").innerHTML=getText(intro_key);
+document.getElementById("outro").innerHTML=getText(outro_key)}}function createRequestObject(){var ro;if(window.XMLHttpRequest){ro=new XMLHttpRequest()}else{if(window.ActiveXObject){try{ro=new ActiveXObject("Microsoft.XMLHTTP")
+}catch(e1){try{ro=new ActiveXObject("Msxml2.XMLHTTP")}catch(e2){showError("browser");return}}}}return ro}var httpinfo=createRequestObject();var http=createRequestObject();var httprequest=createRequestObject();
+function readCookie(name,def){var nameEQ=name+"=",ca=document.cookie.split(";"),i=0,c;for(i=0;i<ca.length;i++){c=ca[i];while(c.charAt(0)===" "){c=c.substring(1,c.length)}if(c.indexOf(nameEQ)===0){return unescape(c.substring(nameEQ.length,c.length))
+}}try{if(typeof(Storage)!=="undefined"&&localStorage.getItem(name)!==null){var record=JSON.parse(localStorage.getItem(name));if(!record){return def}if(new Date().getTime()<record.timestamp){return unescape(record.value)
+}else{deleteCookie(name);return def}}}catch(e){}return def}function writeCookie(name,val,validity){var theDate=new Date(),oneHourLater=new Date(theDate.getTime()+validity*MS_IN_S),expiryDate=oneHourLater.toGMTString();
+var expandedVal=escape(val);if(expandedVal.length<COOKIE_MAX_LENGTH){document.cookie=name+"="+expandedVal+";expires="+expiryDate;if(!document.cookie){showError("cookie")}if(typeof(Storage)!=="undefined"){try{localStorage.removeItem(name)
+}catch(e){}}}else{if(typeof(Storage)!=="undefined"){deleteCookie(name);var record={value:expandedVal,timestamp:oneHourLater.getTime()};try{localStorage.setItem(name,JSON.stringify(record))}catch(e){showError("cookie")
+}}else{showError("cookie")}}}function deleteCookie(name){var exp=new Date();exp.setTime(exp.getTime()-10);document.cookie=name+"=; expires="+exp.toGMTString();if(typeof(Storage)!=="undefined"){try{localStorage.removeItem(name)
+}catch(e){}}}function loadTitle(){if(wr_error!=="null"){showError(wr_error)}else{document.getElementById("titre").innerHTML=getText("titre");document.getElementById("intro").innerHTML=getText("intro");
+document.getElementById("outro").innerHTML=getText("outro")}}function selectInterface(zone){hide("action");hide("captcha");hide("waitdiv");show(zone);clear("message");clear("actionmsg");clear("actionText");
+loadTitle()}function showMessage(msgid){display("message",getText(msgid))}function showActionMessage(msgid){selectInterface("action");display("actionmsg",getText(msgid))}function setTextMessage(id,message){document.getElementById(id).innerHTML=message
+}function hideError(){wr_error="null";clear("error");hide("error");loadTitle()}function onClickButtonFunction(){window.location.href=this.getElementsByTagName("a")[0].href;return false}function initButton(button){var functionToAdd=onClickButtonFunction,innerLinks=button.getElementsByTagName("a"),link;
+if(innerLinks.length===1){link=innerLinks[0];if(typeof link.onclick==="function"){functionToAdd=link.onclick;link.onclick=null}button.onclick=onClickButtonFunction}}function setActionButton(text,fct){document.getElementById("actionButton").href="javascript:"+fct+"()";
+document.getElementById("actionButtonText").innerHTML=getText(text);initButton(document.getElementById("actionButtonSpan"))}function getSourceUrl(){if(sourceUrl===null){sourceUrl=readCookie(COOKIE_SOURCE+wr_queue,null)
+}if(sourceUrl===null){if(window.location.href.indexOf("javascript:")>-1){return"xss"}const urlParams=new URLSearchParams(window.location.search);var paramSource=urlParams.get("source");if(paramSource!==null){try{paramSource=decodeURIComponent(paramSource)
+}catch(e){return"xss"}sourceUrl=paramSource}}if(sourceUrl!==null){if(sourceUrl.startsWith('"')){sourceUrl=sourceUrl.substring(1,sourceUrl.length)}if(sourceUrl.endsWith('"')){sourceUrl=sourceUrl.substring(0,sourceUrl.length-1)
+}}if(sourceUrl!==null&&isMaliciousInput(sourceUrl)||!isValidHttpUrl(sourceUrl)){return"xss"}return sourceUrl}function isMaliciousInput(input){var normalized_input=input.toLowerCase();var dangerousKeywords=["javascript","vbscript","data:","expression(","onerror","onload","onclick","onmouseover","onsubmit","document.cookie","document.write","window.location"];
+for(var i=0;i<dangerousKeywords.length;i++){if(normalized_input.indexOf(dangerousKeywords[i])!==-1){return true}}return false}function isValidHttpUrl(urlString){if(typeof urlString!=="string"||urlString.trim()===""){return false
+}const lowerUrl=urlString.toLowerCase();if(lowerUrl.includes("javascript:")||lowerUrl.includes("data:")||lowerUrl.includes("file:")||lowerUrl.includes("about:")||lowerUrl.includes("vbscript:")||lowerUrl.includes("%0a")||lowerUrl.includes("%0d")||lowerUrl.includes("%00")){return false
+}if(lowerUrl.includes("&#")||lowerUrl.includes("&lt;")){return false}try{const url=new URL(urlString);if(url.protocol!=="http:"&&url.protocol!=="https:"){return false}if(!url.host){return false}}catch(e){return false
+}if(/[\x00-\x1F\x7F]/.test(urlString)){return false}return true}function initQueueInfo(){var result={state:"START",response:null,enterts:null,accessts:null,refreshtime:null};return result}function persistQueueInfo(){var info=JSON.stringify(queueinfo);
+writeCookie(COOKIE_QUEUEINFO+wr_queue,info,COOKIE_TTL)}function readQueueInfo(){var cookieQueueInfo=readCookie(COOKIE_QUEUEINFO+wr_queue,"null"),storedQueueInfo=null;if(cookieQueueInfo!=="null"){storedQueueInfo=JSON.parse(cookieQueueInfo);
+if(storedQueueInfo.state!=="null"){queueinfo=storedQueueInfo;return true}}return false}function clearWaitCookies(){admissionInfo=null;queueinfo=initQueueInfo();deleteCookie(COOKIE_QUEUEINFO+wr_queue)}function clearWRCookies(){clearWaitCookies();
+queueinfo.state="END";deleteCookie(COOKIE_SOURCE+wr_queue)}function connectionError(){showError("connection");queueinfo.state="END";persistQueueInfo()}function stopProgress(){if(timerProgress!==null){window.clearTimeout(timerProgress)
+}timerProgress=null}function showPause(){var txt=null;if(admissionInfo!==null&&admissionInfo.openingTime!=="null"){txt=getText("message_pauseopening1")+admissionInfo.openingTime+getText("message_pauseopening2")
+}else{txt=getText("message_pause")}selectInterface("waitdiv");hide("waittimer");hide("PBouter");document.getElementById("titre").innerHTML=getText("titre_pause");document.getElementById("intro").innerHTML=getText("intro_pause");
+document.getElementById("outro").innerHTML=getText("outro_pause");document.getElementById("message_wait").innerHTML=txt}function showReload(){var sourceUrl=getSourceUrl();if(sourceUrl===null){showError("cookie")
+}else{if(sourceUrl==="xss"){showError("xss")}else{showActionMessage("message_reload");setActionButton("action_reload","goSource")}}}function showMinWaitMessage(){selectInterface("waitdiv");hide("waittimer");
+hide("PBouter");document.getElementById("message_wait").innerHTML=getText("message_minwait")}function showAdmissionLink(){stopProgress();hide("info");showActionMessage("message_admission");setActionButton("action_link","requestAccess");
+document.getElementById("titre").innerHTML=getText("titre_admission");document.getElementById("intro").innerHTML=getText("intro_admission");document.getElementById("outro").innerHTML=getText("outro_admission");
+document.getElementById("actionText").innerHTML=getText("action_admission")}function showCaptcha(){stopProgress();selectInterface("captcha");document.getElementById("titre").innerHTML=getText("titre_authreq");
+document.getElementById("intro").innerHTML=getText("intro_authreq");document.getElementById("outro").innerHTML=getText("outro_authreq");document.getElementById("img_captcha").src=URL_CAPTCHA+"?rand="+Math.floor(Math.random()*10000000000);
+document.getElementById("action_answer").innerHTML=getText("action_answer");document.getElementById("submit_button_text").innerHTML=getText("action_submit");document.getElementById("newcaptcha_button_text").innerHTML=getText("action_newcaptcha");
+showMessage("message_captcha");document.getElementById("secret").value="";document.getElementById("secret").focus()}function showFairQueue(){hide("waitdiv");document.getElementById("titre").innerHTML=getText("titre_fairQueue");
+document.getElementById("intro").innerHTML=getText("intro_fairQueue");document.getElementById("outro").innerHTML=getText("outro_fairQueue")}function showFairQueueTransition(){show("waitdiv");hide("waittimer");
+document.getElementById("titre").innerHTML=getText("titre_fairQueueTransition");document.getElementById("intro").innerHTML=getText("intro_fairQueueTransition");document.getElementById("outro").innerHTML=getText("outro_fairQueueTransition")
+}function showOnsalesTransition(){show("waitdiv");hide("waittimer");admissionInfo.showWaitingTime="false";admissionInfo.fairQueuePeriod=undefined;process();document.getElementById("titre").innerHTML=getText("titre_fairQueueTransition");
+document.getElementById("intro").innerHTML=getText("intro_fairQueueTransition");document.getElementById("outro").innerHTML=getText("outro_fairQueueTransition")}function hideOnsalesWidget(){hide("onsalesWaitingRoomWidget")
+}function showOnsalesWidget(){show("onsalesWaitingRoomWidget")}function drawProgressBar(total,remaining){if(total==="null"){return}if(total===0){total=remaining}remaining=Math.max(0,remaining);var done=Math.round(((total-remaining)/total)*100);
+done=Math.max(done,0);done=Math.min(done,100);document.getElementById("PBdone").style.width=done+"%"}function showTime(time){var min=Math.floor(time/60),sec=time%60,hour=Math.floor(min/60),timer="";min=min%60;
+if(showInClockFormat){timer=hour>0?addZeroToTime(hour)+":":"";timer+=min>0||(min===0&&hour>0)?addZeroToTime(min)+":":"";timer+=addZeroToTime(sec)}else{const hourLabel=getText("message_hour")!==undefined?getText("message_hour"):" h.";
+timer=hour>0?addZeroToTime(hour)+hourLabel:"";timer+=min>0||(min===0&&hour>0)?addZeroToTime(min)+getText("message_min"):"";timer+=addZeroToTime(sec)+getText("message_sec")}return timer}function addZeroToTime(number){return number.toString().length<2&&number>=0?"0"+number:String(number)
+}function progress(){if(queueinfo.accessts===null||queueinfo.enterts===null){return}if(timerProgress===null){return}var wr_waitr=Math.floor((queueinfo.accessts-now())/MS_IN_S),wr_wait0=Math.floor((queueinfo.accessts-queueinfo.enterts)/MS_IN_S);
+if(queueinfo.state!=="WAITMIN"&&wr_waitr<=MIN_WAIT_TIME){queueinfo.state="WAITMIN";timerProgress=null;showMinWaitMessage()}else{timerProgress=window.setTimeout("progress()",PB_INCR_MS)}if(admissionInfo!==null&&queueinfo.state==="WAIT"&&admissionInfo.openingTime==="null"){document.getElementById("wait").innerHTML=showTime(wr_waitr)
+}drawProgressBar(wr_wait0,wr_waitr)}function showProgress(queueinfo,wr_waitr){var message="";if(queueinfo.state!=="WAIT"&&queueinfo.state!=="WAITMIN"&&queueinfo.state!=="WAITLONG"){return}selectInterface("waitdiv");
+hide("waittimer");if(admissionInfo.openingTime!=="null"){message=getText("message_opening1")+admissionInfo.openingTime+getText("message_opening2")}else{if(queueinfo.state==="WAITLONG"||queueinfo.accessts===null||queueinfo.enterts===null){message=getText("message_longwait")
+}else{message=getText("message_wait");showWaitingTime(wr_waitr)}showMessage("message_waittime")}setTextMessage("message_wait",message);queuePosition();enableTimerProgress()}function queuePosition(){admissionInfo.showQueuePosition==="true"?enableQueuePosition():disabledQueuePosition()
+}function enableQueuePosition(){var queuepositionElement=document.getElementById("queueposition"),queuePosition=Number(admissionInfo.queuePosition),queuePositionMessage=getText("message_position");if(queuePositionMessage===null||queuePositionMessage===undefined){disabledQueuePosition();
+return}if(queuePosition!==undefined&&!isNaN(queuePosition)){show("queuePositionGroup");setTextMessage("message_queue_position",queuePositionMessage);queuepositionElement.innerHTML=queuePosition}}function disabledQueuePosition(){hide("queuePositionGroup");
+document.getElementById("queueposition").innerHTML=""}function showWaitingTime(wr_waitr){if(timerProgress===null){document.getElementById("wait").innerHTML=showTime(wr_waitr)}show("waittimer")}function enableTimerProgress(){show("PBouter");
+if(timerProgress===null){timerProgress=1;progress()}}function redirectToACP(){var url=admissionInfo.admissionURL;if(!admissionInfo.cookieAdded&&admissionInfo.admissionURL.indexOf("AT=")<0){if(admissionInfo.admissionURL.indexOf("?")>0){url+="&AT="+admissionInfo.admissionToken
+}else{url+="?AT="+admissionInfo.admissionToken}}clearWRCookies();document.location=url}function checkQueueSelect(){var redirect=null,regex=new RegExp('"location": "([^"]*)"'),results=null,ct=null;if(httprequest.readyState===4){lastCall=new Date();
+hideError();if(httprequest.status===403){connectionError();return}if(httprequest.status!==200){showPause();window.setTimeout("initConnection(true)",DEFAULT_TIME*MS_IN_S);return}results=regex.exec(httprequest.responseText);
+if(results!==null){redirect=results[1]}ct=readCookie(COOKIE_CT,null);at=readCookie(AT_PREFIX+wr_queue,null);if(ct===null||(redirect!==null&&redirect.indexOf("welcome?AT=")>0)||(redirect!==null&&redirect.indexOf("AcpAT=")>0)||(at!==null)){if(redirect!==null){clearWRCookies();
+document.location=redirect}else{connectionError();return}return}window.setTimeout("requestWaitingTime()",DELAY)}}function stopWatchdog(){if(timerWatchdog!==null){window.clearTimeout(timerWatchdog)}}function triggerWatchdog(){var delta=now()-lastCall.getTime();
+if(admissionInfo!==null&&(admissionInfo.token!=="null"&&delta>((MAX_POLL_FREQ+RETRY_PERIOD)*MS_IN_S))){stopProgress();showError("connection")}stopWatchdog();timerWatchdog=window.setTimeout("triggerWatchdog()",RETRY_PERIOD*MS_IN_S)
+}function triggerControllerRequest(delay,afterException){var nextRefreshTime=queueinfo.refreshtime,retryDelay=delay*MS_IN_S,time_now=now();triggerWatchdog();if(nextRefreshTime!==null&&nextRefreshTime>time_now){retryDelay=nextRefreshTime-time_now
+}else{nextRefreshTime=time_now+retryDelay;queueinfo.refreshtime=nextRefreshTime;persistQueueInfo()}if(timerControllerRequest!==null){window.clearTimeout(timerControllerRequest)}if(afterException&&retryDelay<RETRY_PERIOD*MS_IN_S){retryDelay=RETRY_PERIOD*MS_IN_S
+}timerControllerRequest=window.setTimeout("requestWaitingTime()",retryDelay)}function restoreWR(serverAnswer){if(readQueueInfo()){var response=JSON.parse(queueinfo.response),serverAdmissionInfo=null;if(response!==null){serverAdmissionInfo=response.admissionInfo
+}if(serverAdmissionInfo===null){admissionInfo="null";if(queueinfo.state!=="END"){wr_error="technical"}return}else{if(admissionInfo!==null){var prevwrtoken=admissionInfo.token,prevwaitingTime=admissionInfo.waitingTime;
+admissionInfo=serverAdmissionInfo;if(admissionInfo.token==="null"){admissionInfo.token=prevwrtoken}if(admissionInfo.waitingTime==="null"){admissionInfo.waitingTime=prevwaitingTime}}else{admissionInfo=serverAdmissionInfo
+}}if(admissionInfo.error!=="null"){wr_error=admissionInfo.error}}if(admissionInfo!==null&&admissionInfo.waitingTime!=="null"){if(queueinfo.enterts===null){queueinfo.enterts=now();persistQueueInfo()}var wr_waitr=admissionInfo.waitingTime,sleep;
+if(queueinfo.accessts!==null){wr_waitr=Math.max(0,queueinfo.accessts-now())}if(serverAnswer){queueinfo.accessts=now()+admissionInfo.waitingTime*MS_IN_S;persistQueueInfo()}if(admissionInfo.waitingTime>wr_waitr&&admissionInfo.waitingTime<wr_waitr+PROGRESS_WAIT_THRESHOLD){if(timerProgress!==null){stopProgress();
+sleep=Math.max(10,(admissionInfo.waitingTime-wr_waitr)*MS_IN_S);timerProgress=window.setTimeout("progress()",sleep)}}}}function persistResponse(response,responseTime){queueinfo.response=response;queueinfo.lastResponseTime=responseTime;
+persistQueueInfo();if(wr_error!=="cookie"){restoreWR(true)}if(response!==undefined){var jsonResponse=JSON.parse(response);if(jsonResponse.admissionInfo!==undefined&&jsonResponse.admissionInfo.userPollingInterval!==undefined){MAX_POLL_FREQ=jsonResponse.admissionInfo.userPollingInterval
+}}}function retryPeriod(initialDelayMs){var nextCallDelay=initialDelayMs;if(queueinfo.lastResponseTime!==null&&queueinfo.lastResponseTime>0){var nowDate=new Date();if(nowDate.getTime()<queueinfo.lastResponseTime+initialDelayMs){nextCallDelay=queueinfo.lastResponseTime+initialDelayMs-nowDate.getTime()
+}else{nextCallDelay=DELAY}}return nextCallDelay}function process(){var loop=true,refresh_time;while(loop){switch(queueinfo.state){case"START":initConnection(true);loop=false;break;case"INITIALIZED":if((admissionInfo.genWRT==="false")||(admissionInfo.genAT==="false")){queueinfo.state="IDLE";
+break}if(admissionInfo.needCaptcha==="true"){queueinfo.state="AUTHREQ"}else{if(admissionInfo.admissionToken==="null"){queueinfo.state="AUTHORIZED"}else{queueinfo.state="ADMITTED"}}break;case"AUTHREQ":if(admissionInfo.token!=="null"){queueinfo.state="AUTHORIZED"
+}else{if(admissionInfo.genWRT==="false"){queueinfo.state="IDLE"}else{loop=false;showCaptcha();hideOnsalesWidget()}}break;case"AUTHORIZED":selectInterface("info");deleteCookie(COOKIE_CT);if(admissionInfo.admissionToken==="null"){queueinfo.state="WAIT"
+}else{queueinfo.state="ADMITTED"}break;case"WAITMIN":if(admissionInfo.waitingTime>MIN_WAIT_TIME_THRESHOLD){queueinfo.state="WAIT"}case"WAITLONG":if(admissionInfo.showWaitingTime==="true"){queueinfo.state="WAIT"
+}case"WAIT":if(admissionInfo.genAT==="false"){queueinfo.state="PAUSE"}else{if(admissionInfo.canEnter==="true"){queueinfo.state="READY"}else{if(admissionInfo.waitingTime<=MIN_WAIT_TIME){queueinfo.state="WAITMIN"
+}if(admissionInfo.showWaitingTime==="false"){queueinfo.state="WAITLONG"}if(wr_error==="technical"){refresh_time=RETRY_PERIOD}else{if(admissionInfo.waitingTime>=MIN_POLL_FREQ*2){refresh_time=admissionInfo.waitingTime/2;
+refresh_time=Math.min(refresh_time,MAX_POLL_FREQ)}else{refresh_time=1+parseInt(admissionInfo.waitingTime,10);refresh_time=Math.max(refresh_time,MIN_POLL_FREQ)}}triggerControllerRequest(refresh_time,false);
+loop=false;if(queueinfo.state==="WAITMIN"){showMinWaitMessage()}else{showProgress(queueinfo,admissionInfo.waitingTime)}}}if(isShowOnsalesWaitingRoomWidget()){showOnsalesWidget()}else{hideOnsalesWidget()
+}if(admissionInfo.fairQueuePeriod!==undefined){delayLoadingDiv(admissionInfo.fairQueuePeriod)}break;case"READY":stopWatchdog();if(admissionInfo.canEnter==="false"){queueinfo.state="WAITMIN"}else{if(admissionInfo.admissionToken!=="null"){queueinfo.state="ADMITTED"
+}else{if(admissionInfo.genAT==="false"){queueinfo.state="PAUSE"}else{loop=false;showAdmissionLink()}}}break;case"ADMITTED":loop=false;redirectToACP();break;case"ERROR":loop=false;showError(admissionInfo.error);
+stopWatchdog();break;case"END":loop=false;stopWatchdog();showReload();break;case"IDLE":selectInterface("info");if(admissionInfo!==null&&admissionInfo.genWRT==="true"){queueinfo.state="START"}else{loop=false;
+triggerWatchdog();showPause();var nextCallDelay=retryPeriod(MAX_POLL_FREQ*MS_IN_S);window.setTimeout("initConnection(false)",nextCallDelay)}break;case"PAUSE":if(admissionInfo!==null&&admissionInfo.genAT==="true"){selectInterface("info");
+queueinfo.state="READY"}else{loop=false;showPause();var nextCallDelay=retryPeriod(RETRY_PERIOD*MS_IN_S);triggerControllerRequest(nextCallDelay/1000,false)}break;default:break}}persistQueueInfo()}function handleResponse(){if(http.readyState===4){lastCall=new Date();
+hideError();if(http.status===200){persistResponse(http.responseText,lastCall.getTime());if(queueinfo.state==="START"){queueinfo.state="INITIALIZED"}if(wr_error!=="null"&&wr_error!=="reset"){showError(wr_error)
+}if(wr_error==="reset"||wr_error==="timeout"){if(getSourceUrl()===null){showReload()}else{window.setTimeout("initConnection(false)",DELAY)}return}}else{console.log("A technical error has occurred.")}if(admissionInfo!==null){process()
+}else{triggerControllerRequest(DEFAULT_TIME,false)}}}function getResponse(url){try{http.open("get",url);http.onreadystatechange=handleResponse;http.send(null)}catch(err){console.log("A technical error has occurred.");
+if(admissionInfo!==null){window.setTimeout("process()",RETRY_PERIOD*MS_IN_S)}else{triggerControllerRequest(RETRY_PERIOD,true)}}}function requestWaitingTime(){var url=URL_CONTROLLER;var ffrt=readCookie(COOKIE_FFRT,null);
+if(ffrt){url+="?FFRT="+ffrt;deleteCookie(COOKIE_FFRT)}else{readQueueInfo();if(admissionInfo!==null&&(admissionInfo.token)&&(admissionInfo.token!=="null")&&(admissionInfo.token.length>0)){url+="?WRT="+admissionInfo.token
+}}getResponse(url)}function isShowOnsalesWaitingRoomWidget(){return admissionInfo&&admissionInfo.showOnsalesWaitingRoomWidget==="true"}function initConnection(useCT){var ct=readCookie(COOKIE_CT,null),source,url;
+if(useCT&&ct!==null){requestWaitingTime();return}source=getSourceUrl();if(source===null){connectionError();return}stopWatchdog();stopProgress();clearWaitCookies();persistQueueInfo();try{url=URL_SELECT+"?init=1"+"&queueName="+wr_queue+"&source="+encodeURIComponent(source);
+httprequest.open("get",url);httprequest.onreadystatechange=checkQueueSelect;httprequest.send(null)}catch(err){showPause();window.setTimeout("initConnection(true)",RETRY_PERIOD*MS_IN_S);return}}function requestAccess(){var url=URL_CONTROLLER+"?GEN_AT=true";
+if(admissionInfo!==null&&admissionInfo.token!=="null"&&admissionInfo.token.length>0){url+="&WRT="+admissionInfo.token}window.setTimeout('getResponse("'+url+'")',DELAY)}function goSource(){var target=getSourceUrl();
+clearWRCookies();if(target===null){showError("cookie")}else{if(target==="xss"){showError("xss")}else{document.location=target}}}function submitCaptcha(){var val=document.getElementById("secret").value,url=null;
+if(val.length>0){url=URL_CONTROLLER+"?CAPTCHA="+val;window.setTimeout('getResponse("'+url+'")',DELAY)}}function newCaptcha(){hideError();var url=URL_CONTROLLER+"?newcaptcha=true";window.setTimeout('getResponse("'+url+'")',DELAY)
+}function installInfoZone(){var content=null;if(httpinfo.readyState===4&&httpinfo.status===200){content=httpinfo.responseText}if(content!==null&&content.length>0){display("info",content)}else{hide("info");
+clear("info")}}function refreshInfoZone(){try{var url=URL_CONTENT_BASE+wr_queue+"/"+langcode+URL_CONTENT_FILE;httpinfo.open("get",url);httpinfo.onreadystatechange=installInfoZone;httpinfo.send(null)}catch(err){return
+}startInfoRefresh()}function startInfoRefresh(){var initinfo=false;if(timerInfoRefresh!==null){window.clearTimeout(timerInfoRefresh)}else{initinfo=true}timerInfoRefresh=window.setTimeout("refreshInfoZone()",INFO_REFRESH_MS);
+if(initinfo){refreshInfoZone()}}function getQueueName(){var regex=new RegExp("[/?&]queue=([^&#]*)"),results=regex.exec(window.location.href);if(results!==null){wr_queue=results[1]}}function setLangSwitches(){var langlinks=document.getElementsByName("langlink"),linkId=0,alink;
+for(linkId=0;linkId<langlinks.length;linkId++){alink=langlinks.item(linkId);alink.href=alink.href+window.location.search}}function setBrandingResources(){var resId;for(resId in resources){document.getElementById(resId).innerHTML=resources[resId];
+show(resId)}}function prepareInterface(){initButton(document.getElementById("submit_button"));initButton(document.getElementById("newcaptcha_button"));getQueueName();setLangSwitches();setBrandingResources();
+loadTitle();startInfoRefresh()}function getErrorUrl(){var regex=new RegExp("[/?&]error=([^&#]*)"),results=regex.exec(window.location.href);if(results!==null){wr_error=results[1]}}function delayLoadingDiv(milliseconds){if(timeoutId){window.clearTimeout(timeoutId)
+}showFairQueue();if(isShowOnsalesWaitingRoomWidget()){window.setTimeout("showOnsalesTransition()",milliseconds)}else{window.setTimeout("showFairQueueTransition()",milliseconds)}}function init(){queueinfo=initQueueInfo();
+prepareInterface();if(wr_queue===null){showReload();return}getErrorUrl();if(wr_error!=="null"){showError(wr_error);return}getSourceUrl();restoreWR(false);process()};</script>
+<script type="text/javascript">
+(function(){var gtm=function(){var tagId="GTM-568KJZZX";var gtaScript=document.createElement("script");gtaScript.text="(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','"+tagId+"');";
+document.body.insertBefore(gtaScript,document.body.firstChild)};if(window.addEventListener){window.addEventListener("load",gtm)}else{window.attachEvent("onload",gtm)}})();</script>
+<script type="text/javascript">
+var resources = new Array();
+showInClockFormat = true;
+
+const clockBackgroundColor = "#DEE4EB";
+const clockProgressColor1 = "#b40050";
+const clockProgressColor2 = "rgb(245, 70, 0)";
+
+function show(zone) {
+  //Don't show infozone when it is empty
+  if (zone === "info" && document.getElementById(zone).innerHTML.length <= 0) {
+    return;
+  } else if (zone === "PBouter" || zone === "action") {
+    document.getElementById(zone).style.display = "flex";
+  } else {
+    document.getElementById(zone).style.display = "block";
+    document.getElementById("waittimer").style.display = "flex";
+  }
+}
+
+function drawProgressBar(total, remaining) {
+  var reloadExists = document.getElementById("");
+  if (total === "null" || queueinfo.state === "END") {
+    return;
+  }
+
+  if (queueinfo.state === "WAITLONG") {
+    if (!document.getElementById("spinner")) {
+      document.getElementById("waittimer").style.display = "none";
+      document.getElementById("waitdiv").style.display = "block";
+      document.getElementById("message_wait").style.display = "none";
+      document.getElementById("PBdone").innerHTML = `<div id="spinner">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>`;
+    } else {
+      return;
+    }
+  } else if (queueinfo.state === "WAITMIN") {
+    document.getElementById("waitdiv").style.display = "none";
+    document.getElementById("message").style.display = "block";
+    document.getElementById("message_wait").style.display = "none";
+    document.getElementById("message").innerHTML = getText("message_waittime");
+  } else if (queueinfo.state === "WAIT") {
+    if (total === 0) {
+      total = remaining;
+    }
+    var svgOffset = (remaining * 590.32) / total;
+    document.getElementById("waitdiv").style.display = "block";
+    document.getElementById("message_wait").style.display = "flex";
+    const waittimer = document.getElementById("waittimer");
+    const pbouter = document.getElementById("PBouter");
+
+    pbouter.appendChild(waittimer);
+
+    if (admissionInfo.openingTime !== "null") {
+      setTextMessage("wait", admissionInfo.openingTime);
+      const timerDiv = document.getElementById("waittimer_labels");
+      timerDiv.style.display = "none";
+
+      document.getElementById(
+        "PBdone"
+      ).innerHTML = `<svg width="268" height="268" viewBox="-26 -26 260 260" version="1.1" xmlns="http://www.w3.org/2000/svg" style="transform:rotate(90deg)">
+      <circle r="94" cx="104" cy="104" fill="transparent" stroke="${clockBackgroundColor}" stroke-width="20" stroke-dasharray="590.32px" stroke-dashoffset="0"></circle>
+      </svg>`;
+    } else {
+      const element = document.getElementById("wait");
+      const texto = element.innerText;
+      const matches = texto.match(/:/g);
+
+      const brs = waittimer.getElementsByTagName("br");
+
+      while (brs[0]) {
+        brs[0].parentNode.removeChild(brs[0]);
+      }
+
+      let timerDivExists = document.getElementById("waittimer_labels");
+
+      let timerDiv;
+      if (timerDivExists) {
+        timerDiv = document.getElementById("waittimer_labels");
+      } else {
+        timerDiv = document.createElement("div");
+        timerDiv.id = "waittimer_labels";
+      }
+      timerDiv.style.display = "flex";
+
+      if (matches == null) {
+        timerDiv.innerHTML = `<div>${getText("message_sec")}</div>`;
+      } else if (matches.length === 1) {
+        timerDiv.innerHTML = `<div>${getText(
+          "message_min"
+        )}</div><div>${getText("message_sec")}</div>`;
+      } else {
+        timerDiv.innerHTML = `<div>${getText(
+          "message_hour"
+        )}</div><div>${getText("message_min")}</div><div>${getText(
+          "message_sec"
+        )}</div>`;
+      }
+
+      if (!timerDivExists) {
+        document.getElementById("waittimer").appendChild(timerDiv);
+      }
+      document.getElementById(
+        "PBdone"
+      ).innerHTML = `<svg width="268" height="268" viewBox="-26 -26 260 260" version="1.1" xmlns="http://www.w3.org/2000/svg" style="transform:rotate(90deg)">
+      <defs>
+      <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:${clockProgressColor2};stop-opacity:1"></stop> <!-- Color A -->
+      <stop offset="100%" style="stop-color:${clockProgressColor1};stop-opacity:1"></stop> <!-- Color B -->
+      </linearGradient>
+      </defs>
+      <circle r="94" cx="104" cy="104" fill="transparent" stroke="${clockBackgroundColor}" stroke-width="20" stroke-dasharray="590.32px" stroke-dashoffset="0"></circle>
+      <circle r="94" cx="104" cy="104" stroke="url(#grad1)" stroke-width="20" stroke-linecap="round" stroke-dashoffset="${svgOffset}px" fill="transparent" stroke-dasharray="590.32px"></circle>
+      </svg>`;
+    }
+    document.getElementById("waittimer").style.display = "flex";
+  }
+}
+
+function languagesButtonClick() {
+  document.getElementById("optionsContent").classList.toggle("languages_show");
+}
+
+var interval = setInterval(function () {
+  var languages = document.getElementById("languages");
+  if (languages) {
+    clearInterval(interval);
+    var children = languages.childNodes;
+    var options = [];
+    var label = "";
+    children.forEach(function (child) {
+      if (child.href) {
+        child.classList.remove("langlink");
+        child.classList.add("languages_langlink");
+        options.push(child);
+      }
+      if (child.classList && child.classList.contains("langcurrent")) {
+        label = child.innerText;
+      }
+    });
+    while (languages.firstChild) {
+      languages.removeChild(languages.firstChild);
+    }
+
+    var selectContent = document.createElement("div");
+    selectContent.classList.add("languages_selectContent");
+
+    languages.appendChild(selectContent);
+
+    var optionsContent = document.createElement("div");
+    optionsContent.id = "optionsContent";
+    optionsContent.classList.add("languages_dropdown-content");
+
+    options.forEach(function (option) {
+      optionsContent.appendChild(option);
+    });
+
+    var languagesButton = document.createElement("div");
+    languagesButton.id = "languagesDropdownButton";
+    languagesButton.classList.add("languages_dropbtn");
+    languagesButton.tabIndex = 0;
+    languagesButton.setAttribute("role", "button");
+    languagesButton.innerHTML = `
+    <img alt="lang" src="./resources/Language.svg"/>
+    <div id="languagesDropdownButtonWithIconLabel">
+    ${label}
+    </div>`;
+    languagesButton.onclick = languagesButtonClick;
+
+    languagesButton.onkeydown = function(event) {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        languagesButtonClick();
+      }
+    };
+
+    selectContent.appendChild(languagesButton);
+    selectContent.appendChild(optionsContent);
+  }
+}, 10);
+
+window.onclick = function (event) {
+  if (
+    !event.target.matches(".languages_dropbtn") &&
+    !event.target.matches("#languagesDropdownButtonWithIconLabel") &&
+    !event.target.matches("#world")
+  ) {
+    var dropdowns = document.getElementsByClassName(
+      "languages_dropdown-content"
+    );
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains("languages_show")) {
+        openDropdown.classList.remove("languages_show");
+      }
+    }
+  }
+};
+
+function showPause() {
+  hide("waitdiv");
+  document.getElementById("titre").innerHTML = getText("titre_pause");
+  document.getElementById("intro").innerHTML = getText("intro_pause");
+  document.getElementById("outro").innerHTML = getText("outro_pause");
+}
+
+
+/*CAS-54132 Datadome snippet */
+!function(a,b,c,d,e,f){a.ddjskey=e;a.ddoptions=f||null;var m=b.createElement(c),n=b.getElementsByTagName(c)[0];m.async=1,m.src=d,n.parentNode.insertBefore(m,n)}(window,document,"script","https://js.datadome.co/tags.js","0C2C1B588E78C2F596AEBB81D61A27", { ajaxListenerPath: true });</script>
+<script type="text/javascript">
+</script>
+<script type="text/javascript">
+</script>
+<style type="text/css">.lf-progress {
+  -webkit-appearance: none;
+  -moz-apperance: none;
+  width: 100%;
+  /* margin: 0 10px; */
+  height: 4px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.lf-progress:focus {
+  outline: none;
+  border: none;
+}
+.lf-progress::-moz-range-track {
+  cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
+}
+.lf-progress::-webkit-slider-thumb {
+  -webkit-appearance: none !important;
+  height: 13px;
+  width: 13px;
+  border: 0;
+  border-radius: 50%;
+  background: #0fccce;
+  cursor: pointer;
+}
+.lf-progress::-moz-range-thumb {
+  -moz-appearance: none !important;
+  height: 13px;
+  width: 13px;
+  border: 0;
+  border-radius: 50%;
+  background: #0fccce;
+  cursor: pointer;
+}
+.lf-progress::-ms-track {
+  width: 100%;
+  height: 3px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+.lf-progress::-ms-fill-lower {
+  background: #ccc;
+  border-radius: 3px;
+}
+.lf-progress::-ms-fill-upper {
+  background: #ccc;
+  border-radius: 3px;
+}
+.lf-progress::-ms-thumb {
+  border: 0;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background: #0fccce;
+  cursor: pointer;
+}
+.lf-progress:focus::-ms-fill-lower {
+  background: #ccc;
+}
+.lf-progress:focus::-ms-fill-upper {
+  background: #ccc;
+}
+.lf-player-container :focus {
+  outline: 0;
+}
+.lf-popover {
+  position: relative;
+}
+
+.lf-popover-content {
+  display: inline-block;
+  position: absolute;
+  opacity: 1;
+  visibility: visible;
+  transform: translate(0, -10px);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  transition: all 0.3s cubic-bezier(0.75, -0.02, 0.2, 0.97);
+}
+
+.lf-popover-content.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(0, 0px);
+}
+
+.lf-player-btn-container {
+  display: flex;
+  align-items: center;
+}
+.lf-player-btn {
+  cursor: pointer;
+  fill: #999;
+  width: 14px;
+}
+
+.lf-player-btn.active {
+  fill: #555;
+}
+
+.lf-popover {
+  position: relative;
+}
+
+.lf-popover-content {
+  display: inline-block;
+  position: absolute;
+  background-color: #ffffff;
+  opacity: 1;
+
+  transform: translate(0, -10px);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  transition: all 0.3s cubic-bezier(0.75, -0.02, 0.2, 0.97);
+  padding: 10px;
+}
+
+.lf-popover-content.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(0, 0px);
+}
+
+.lf-arrow {
+  position: absolute;
+  z-index: -1;
+  content: '';
+  bottom: -9px;
+  border-style: solid;
+  border-width: 10px 10px 0px 10px;
+}
+
+.lf-left-align,
+.lf-left-align .lfarrow {
+  left: 0;
+  right: unset;
+}
+
+.lf-right-align,
+.lf-right-align .lf-arrow {
+  right: 0;
+  left: unset;
+}
+
+.lf-text-input {
+  border: 1px #ccc solid;
+  border-radius: 5px;
+  padding: 3px;
+  width: 60px;
+  margin: 0;
+}
+
+.lf-color-picker {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 90px;
+}
+
+.lf-color-selectors {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.lf-color-component {
+  display: flex;
+  flex-direction: row;
+  font-size: 12px;
+  align-items: center;
+  justify-content: center;
+}
+
+.lf-color-component strong {
+  width: 40px;
+}
+
+.lf-color-component input[type='range'] {
+  margin: 0 0 0 10px;
+}
+
+.lf-color-component input[type='number'] {
+  width: 50px;
+  margin: 0 0 0 10px;
+}
+
+.lf-color-preview {
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 5px;
+}
+
+.lf-preview {
+  height: 60px;
+  width: 60px;
+}
+
+.lf-popover-snapshot {
+  width: 150px;
+}
+.lf-popover-snapshot h5 {
+  margin: 5px 0 10px 0;
+  font-size: 0.75rem;
+}
+.lf-popover-snapshot a {
+  display: block;
+  text-decoration: none;
+}
+.lf-popover-snapshot a:before {
+  content: '⥼';
+  margin-right: 5px;
+}
+.lf-popover-snapshot .lf-note {
+  display: block;
+  margin-top: 10px;
+  color: #999;
+}
+.lf-player-controls > div {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+.lf-player-controls > div:first-child {
+  margin-left: 0px;
+}
+.lf-player-controls > div:last-child {
+  margin-right: 0px;
+}
+</style></head>
+<body onload="init();"><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-568KJZZX');</script>
+<div id="page">
+<noscript>
+  <div style="background-color: #cc3300;color: #ffffff;font-weight: bold;font-size: 12px;text-align:center;padding: 5px;">
+    <span id="error_javascript">Please enable Javascript and refresh the page.</span>
+  </div>
+</noscript>
+<div id="logo"></div>
+<div id="onsalesWaitingRoomWidget" style="display:none"></div>
+<div class="wrtop"></div>
+<div id="waitingroom">
+<h1 id="titre"><p><strong>Almost there…</strong></p></h1>
+<div id="intro"></div>
+<div id="error" style="display: none;"></div>
+
+<div id="interface">
+  <div id="message" style="display: block;"><p>Thank you for waiting to enter the Visa Presale Draw for the FIFA World Cup 26™. When you are closer to your entry time, a countdown will appear before you can enter the Visa Presale Draw. Once the countdown is over, an 'ENTER' button will be available for 5 minutes; click it to access.<strong> Please check the progress of the queue regularly to avoid missing your chance to access and enter the Visa Presale Draw.</strong></p><p><strong><br></strong></p><p><strong>Please do not refresh or leave this page; otherwise, you may lose your position in the queue.</strong></p><strong><br></strong><p><strong> The Visa Presale Draw will determine which customers will be invited to purchase tickets at a later stage, on a first-come, first-served basis (subject to availability).</strong></p><strong><br></strong><p><strong>The results of the draw will be announced no earlier than 29 September 2025. Successful applicants will be assigned a specific date and time slot purchase tickets on a first-come, first-served basis (subject to availability).</strong></p><strong><br></strong><p><strong>Please note: In order to enter the draw, you must be the cardholder (primary or secondary) in good standing of a valid, unexpired Visa debit card, credit card, or reloadable prepaid card enabled with 3D Secure.</strong></p></div>
+
+  <div id="action" style="display: none;">
+    <div id="actionmsg" class="actionmsg"></div>
+    <span id="actionButtonSpan" class="btnColor1"><a href="https://access.tickets.fifa.com/pkpcontroller/wp/FWC26LOTTERY/index_en.html?queue=10-FWC26-LotteryFCFS" id="actionButton">» <span id="actionButtonText">Button</span></a>
+    </span><span id="actionText"></span>
+  </div>
+
+  <div id="captcha" style="display: none;">
+    <form id="form_captcha" onsubmit="submitCaptcha(); return false;">
+    <div id="img_captcha_container">
+        <img id="img_captcha" width="100" height="67" alt="" src="./fifa ticket_files/captcha.png">
+        <div id="newcaptcha_button">
+          <a href="javascript:newCaptcha()">
+            <img id="catpcha_refresh" src="./fifa ticket_files/refresh.png" alt="catpcha refresh" heigth="18" width="14"><span id="newcaptcha_button_text">New captcha</span>
+          </a>
+        </div>
+    </div>
+    <div id="form_container">
+        <span id="action_answer">Characters:</span>
+        <div id="form_input_buttons">
+            <input type="text" value="" id="secret" name="secret" maxlength="20">
+            <span id="submit_button" class="btnColor1"><a href="javascript:submitCaptcha()">» <span id="submit_button_text">SUBMIT</span></a></span>
+        </div>
+    </div>
+    </form>
+  </div>
+
+  <div id="waitdiv" class="actionmsg" style="display: block;">
+    <span id="queuePositionGroup" style="display: none;"><span id="message_queue_position"></span><span id="queueposition"></span><br></span>
+    <span id="message_wait" style="display: flex;">You will be able to enter the Ticketing Portal in....</span>
+    <div id="PBouter" style="display: flex;"><div id="PBinner"></div><div id="PBdone"><svg width="268" height="268" viewBox="-26 -26 260 260" version="1.1" xmlns="http://www.w3.org/2000/svg" style="transform:rotate(90deg)">
+      <defs>
+      <lineargradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:rgb(245, 70, 0);stop-opacity:1"></stop> <!-- Color A -->
+      <stop offset="100%" style="stop-color:#b40050;stop-opacity:1"></stop> <!-- Color B -->
+      </lineargradient>
+      </defs>
+      <circle r="94" cx="104" cy="104" fill="transparent" stroke="#DEE4EB" stroke-width="20" stroke-dasharray="590.32px" stroke-dashoffset="0"></circle>
+      <circle r="94" cx="104" cy="104" stroke="url(#grad1)" stroke-width="20" stroke-linecap="round" stroke-dashoffset="583.4671973466004px" fill="transparent" stroke-dasharray="590.32px"></circle>
+      </svg></div><span id="waittimer" style="display: flex;"><span id="wait">49:40</span><div id="waittimer_labels" style="display: flex;"><div>min.</div><div>sec.</div></div></span></div>
+  </div>
+</div>
+<div id="outro"></div>
+<div id="info" style="display: none;"></div>
+</div>
+<div class="wrbottom"></div>
+<div id="footer">
+</div>
+<div id="languages"><div class="languages_selectContent"><div id="languagesDropdownButton" class="languages_dropbtn" tabindex="0" role="button">
+    <img alt="lang" src="./fifa ticket_files/Language.svg">
+    <div id="languagesDropdownButtonWithIconLabel">
+    English
+    </div></div><div id="optionsContent" class="languages_dropdown-content"><a class="languages_langlink" name="langlink" href="https://access.tickets.fifa.com/pkpcontroller/wp/FWC26LOTTERY/index_de.html?queue=10-FWC26-LotteryFCFS">Deutsch</a><a class="languages_langlink" name="langlink" href="https://access.tickets.fifa.com/pkpcontroller/wp/FWC26LOTTERY/index_fr.html?queue=10-FWC26-LotteryFCFS">Français</a><a class="languages_langlink" name="langlink" href="https://access.tickets.fifa.com/pkpcontroller/wp/FWC26LOTTERY/index_es.html?queue=10-FWC26-LotteryFCFS">Castellano</a></div></div></div>
+<div id="sponsorZone1">
+</div>
+<div id="sponsorZone2">
+</div>
+<div class="clear"></div>
+</div>
+
+<div id="menu"></div>
+<script type="text/javascript" src="./fifa ticket_files/M5SStHFCAB"></script>
+
+</body></html>

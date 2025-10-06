@@ -1,0 +1,17 @@
+{
+  "clientOptions": {
+    "debug": false
+  },
+  "fingerprintOptions": {
+    "tags": ["Microsoft Windows", "Chrome"],
+    "devices": ["desktop"],
+    "languages": ["en-US"],
+    "maxShuffle": 3
+  },
+  "launchOptions": {
+    "channel": "chrome"
+  },
+  "contextOptions": {
+    "acceptDownloads": false
+  }
+}

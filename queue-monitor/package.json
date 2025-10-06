@@ -1,0 +1,18 @@
+{
+  "name": "fifa-queue-monitor",
+  "version": "0.1.0",
+  "description": "Multi-session queue watcher for FIFA waiting rooms with browser automation and status dashboard.",
+  "type": "module",
+  "scripts": {
+    "start": "node ./src/server.js",
+    "sessions": "node ./src/sessionManager.js",
+    "postinstall": "npx playwright install chromium"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "morgan": "^1.10.0",
+    "playwright": "^1.48.2",
+    "playwright-with-fingerprints": "latest",
+    "socket.io": "^4.7.5"
+  }
+}

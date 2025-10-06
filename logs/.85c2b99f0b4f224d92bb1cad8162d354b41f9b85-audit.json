@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/Users/marianofacundoscigliano/Documents/Fifa queue/logs/.85c2b99f0b4f224d92bb1cad8162d354b41f9b85-audit.json",
+    "files": [
+        {
+            "date": 1759772198669,
+            "name": "/Users/marianofacundoscigliano/Documents/Fifa queue/logs/mcp-puppeteer-2025-10-06.log",
+            "hash": "ec19a2b1fe0a7ddeed7ab45266555073a6a10b09118b0d136acdf327f02e42d7"
+        }
+    ],
+    "hashType": "sha256"
+}
