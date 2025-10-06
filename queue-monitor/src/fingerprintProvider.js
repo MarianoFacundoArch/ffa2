@@ -104,15 +104,14 @@ export async function launchFingerprintContext({ profileDir, launchOptions }) {
       return null;
     }
 
-    // Create a new context and page
-    const context = await browser.newContext({
-      viewport: { width: 1280, height: 720 },
-    });
-    const page = await context.newPage();
+    // Create a page directly (fingerprint plugin doesn't need explicit context)
+    const page = await browser.newPage();
+
+    // Set viewport
+    await page.setViewportSize({ width: 1280, height: 720 });
 
     return {
       browser,
-      context,
       page,
       fingerprint,
     };

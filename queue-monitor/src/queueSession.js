@@ -74,13 +74,10 @@ export class QueueSession extends EventEmitter {
         contextOptions: baseContextOptions,
       });
 
-      if (fingerprintResult?.context) {
+      if (fingerprintResult?.page) {
         this.browser = fingerprintResult.browser || null;
-        this.context = fingerprintResult.context;
-        const [existingPage] = this.context.pages();
-        this.page = fingerprintResult.page
-          || existingPage
-          || (await this.context.newPage());
+        this.context = null; // Fingerprint plugin manages context internally
+        this.page = fingerprintResult.page;
         this.fingerprintInfo = fingerprintResult.fingerprint ?? null;
         this.updateState({ fingerprintActive: true, fingerprintInfo: this.fingerprintInfo });
       } else {
