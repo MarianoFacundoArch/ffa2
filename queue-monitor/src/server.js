@@ -102,6 +102,31 @@ api.post("/sessions/:id/screenshot", async (req, res) => {
   }
 });
 
+api.post("/sessions/:id/captcha", async (req, res) => {
+  const { answer } = req.body || {};
+  if (typeof answer !== "string" || !answer.trim()) {
+    return res.status(400).json({ error: "answer is required" });
+  }
+  try {
+    const state = await manager.submitCaptcha(req.params.id, answer);
+    res.json({
+      message: state.message,
+      lastCaptchaSubmission: state.lastCaptchaSubmission,
+    });
+  } catch (error) {
+    res.status(404).json({ error: error.message });
+  }
+});
+
+api.post("/sessions/:id/captcha/refresh", async (req, res) => {
+  try {
+    const state = await manager.refreshCaptcha(req.params.id);
+    res.json({ message: state.message });
+  } catch (error) {
+    res.status(404).json({ error: error.message });
+  }
+});
+
 api.get("/sessions/:id/screenshot", (req, res) => {
   const session = manager.get(req.params.id);
   if (

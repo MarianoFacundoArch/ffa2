@@ -11,6 +11,7 @@ const globalToggleButton = document.getElementById('global-auto-toggle');
 const sessionElements = new Map();
 const sessionStates = new Map();
 let globalAutoReloadEnabled = true;
+const EMPTY_CAPTCHA_IMAGE = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="160" height="90" viewBox="0 0 160 90"><rect width="160" height="90" rx="12" ry="12" fill="rgba(148,163,184,0.12)" stroke="rgba(148,163,184,0.35)" stroke-width="2" stroke-dasharray="6 6"/><text x="50%" y="50%" fill="rgba(148,163,184,0.6)" font-size="12" text-anchor="middle" alignment-baseline="middle">Captcha hidden</text></svg>';
 
 const STATUS_BADGES = {
   idle: 'Idle',
@@ -43,6 +44,7 @@ function createCard(state) {
   node.querySelector('.info-banner').textContent = state.infoBanner || '—';
   node.querySelector('.last-updated').textContent = formatTime(state.lastUpdated);
   updateScreenshot(node, state);
+  updateCaptcha(node, state);
   node.classList.add(`status-${state.status}`);
 
   sessionElements.set(state.id, node);
@@ -51,7 +53,7 @@ function createCard(state) {
   node.classList.toggle('auto-paused', !state.autoReloadEnabled || !state.globalAutoReloadEnabled);
 
   node.querySelectorAll('button').forEach((btn) => {
-    btn.addEventListener('click', () => handleAction(btn.dataset.action, state.id));
+    btn.addEventListener('click', (event) => handleAction(btn.dataset.action, state.id, event));
   });
 
   sessionsContainer.appendChild(node);
@@ -86,13 +88,19 @@ function updateCard(state) {
   card.className = `session-card status-${state.status}`;
   card.classList.toggle('auto-paused', !state.autoReloadEnabled || !state.globalAutoReloadEnabled);
   updateScreenshot(card, state);
+  updateCaptcha(card, state);
   sessionStates.set(state.id, state);
   updateAutoButton(card, state);
 }
 
-async function handleAction(action, id) {
+async function handleAction(action, id, event) {
   let endpoint;
   const options = { method: 'POST' };
+  const card = sessionElements.get(id);
+  if (event) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
   switch (action) {
     case 'bring':
       endpoint = `/api/sessions/${id}/bring-to-front`;
@@ -111,13 +119,48 @@ async function handleAction(action, id) {
       options.body = JSON.stringify({ enabled: nextEnabled });
       break;
     }
+    case 'submit-captcha': {
+      if (!card) return;
+      const input = card.querySelector('.captcha-answer');
+      const answer = input ? input.value.trim() : '';
+      if (!answer) {
+        alert('Enter the captcha answer first');
+        return;
+      }
+      endpoint = `/api/sessions/${id}/captcha`;
+      options.headers = { 'Content-Type': 'application/json' };
+      options.body = JSON.stringify({ answer });
+      break;
+    }
+    case 'refresh-captcha':
+      endpoint = `/api/sessions/${id}/captcha/refresh`;
+      break;
     default:
       return;
   }
   try {
     const res = await fetch(endpoint, options);
     if (!res.ok) {
-      throw new Error(await res.text());
+      let message = await res.text();
+      try {
+        const parsed = JSON.parse(message);
+        message = parsed.error || parsed.message || message;
+      } catch (error) {
+        // response was not JSON, keep original text
+      }
+      throw new Error(message || 'Request failed');
+    }
+    if (action === 'submit-captcha' && card) {
+      const input = card.querySelector('.captcha-answer');
+      if (input) {
+        input.value = '';
+      }
+    }
+    if (action === 'refresh-captcha' && card) {
+      const panel = card.querySelector('.captcha-panel');
+      if (panel) {
+        panel.dataset.lastCaptchaTs = '';
+      }
     }
   } catch (error) {
     console.error(`Action ${action} failed`, error);
@@ -233,4 +276,52 @@ function updateGlobalButton() {
     ? 'Stop auto reload (all)'
     : 'Resume auto reload (all)';
   globalToggleButton.classList.toggle('off', !globalAutoReloadEnabled);
+}
+
+function updateCaptcha(card, state) {
+  const panel = card.querySelector('.captcha-panel');
+  if (!panel) return;
+  const shouldShow = state.status === 'captcha' || state.captchaRequired;
+  panel.classList.toggle('hidden', !shouldShow);
+  if (!shouldShow) {
+    panel.dataset.lastCaptchaTs = '';
+    const img = panel.querySelector('.captcha-image');
+    if (img) {
+      img.src = EMPTY_CAPTCHA_IMAGE;
+    }
+    const meta = panel.querySelector('.captcha-meta');
+    if (meta) {
+      meta.textContent = 'Waiting for captcha…';
+    }
+    const input = panel.querySelector('.captcha-answer');
+    if (input) {
+      input.value = '';
+    }
+    return;
+  }
+  const img = panel.querySelector('.captcha-image');
+  if (img) {
+    img.src = state.captchaImage || EMPTY_CAPTCHA_IMAGE;
+  }
+  if (state.captchaUpdatedAt) {
+    const lastRendered = panel.dataset.lastCaptchaTs;
+    if (String(state.captchaUpdatedAt) !== lastRendered) {
+      panel.dataset.lastCaptchaTs = String(state.captchaUpdatedAt);
+      const input = panel.querySelector('.captcha-answer');
+      if (input) {
+        input.value = '';
+      }
+    }
+  }
+  const meta = panel.querySelector('.captcha-meta');
+  if (meta) {
+    const parts = [];
+    if (state.captchaUpdatedAt) {
+      parts.push(`Image ${formatTime(state.captchaUpdatedAt)}`);
+    }
+    if (state.lastCaptchaSubmission) {
+      parts.push(`Submitted ${formatTime(state.lastCaptchaSubmission)}`);
+    }
+    meta.textContent = parts.length ? parts.join(' · ') : 'Captcha active';
+  }
 }

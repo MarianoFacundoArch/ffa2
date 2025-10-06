@@ -87,6 +87,24 @@ export class SessionManager extends EventEmitter {
     return session.state;
   }
 
+  async submitCaptcha(id, answer) {
+    const session = this.get(id);
+    if (!session) {
+      throw new Error(`Session ${id} not found`);
+    }
+    await session.submitCaptcha(answer);
+    return session.state;
+  }
+
+  async refreshCaptcha(id) {
+    const session = this.get(id);
+    if (!session) {
+      throw new Error(`Session ${id} not found`);
+    }
+    await session.refreshCaptcha();
+    return session.state;
+  }
+
   setSessionAutoReload(id, enabled) {
     const session = this.get(id);
     if (!session) {

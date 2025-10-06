@@ -28,6 +28,9 @@ export class QueueSession extends EventEmitter {
       countdownText: null,
       queuePosition: null,
       captchaRequired: false,
+      captchaImage: null,
+      captchaUpdatedAt: null,
+      lastCaptchaSubmission: null,
       lastResponse: null,
       lastUpdated: null,
       screenshotPath: null,
@@ -48,6 +51,7 @@ export class QueueSession extends EventEmitter {
     this.globalAutoReloadEnabled = true;
     this.autoReloadMs = config.autoReloadMs || AUTO_RELOAD_MIN_MS;
     this.fingerprintInfo = null;
+    this.lastCaptchaDataUrl = null;
     fs.mkdirSync(this.profileDir, { recursive: true });
     fs.mkdirSync(this.screenshotDir, { recursive: true });
   }
@@ -178,7 +182,7 @@ export class QueueSession extends EventEmitter {
       return;
     }
     try {
-      const payload = await this.page.evaluate(() => {
+      const payload = await this.page.evaluate(async () => {
         const extractText = (selector) => {
           const el = document.querySelector(selector);
           if (!el) return null;
@@ -192,6 +196,22 @@ export class QueueSession extends EventEmitter {
         const captchaVisible = captchaEl
           ? window.getComputedStyle(captchaEl).display !== 'none'
           : false;
+        let captchaDataUrl = null;
+        if (captchaVisible) {
+          const captchaImg = document.querySelector('#img_captcha');
+          if (captchaImg && captchaImg.complete && captchaImg.naturalWidth > 0) {
+            try {
+              const canvas = document.createElement('canvas');
+              canvas.width = captchaImg.naturalWidth;
+              canvas.height = captchaImg.naturalHeight;
+              const ctx = canvas.getContext('2d');
+              ctx.drawImage(captchaImg, 0, 0);
+              captchaDataUrl = canvas.toDataURL('image/png');
+            } catch (error) {
+              captchaDataUrl = null;
+            }
+          }
+        }
         return {
           url: window.location.href,
           admissionInfo: window.admissionInfo ?? null,
@@ -201,6 +221,7 @@ export class QueueSession extends EventEmitter {
           queuePosition: extractText('#queueposition'),
           statusMessage: extractText('#message') || extractText('#message_wait'),
           captchaVisible,
+          captchaDataUrl,
           title: extractText('#titre'),
           infoBanner: extractText('#info') ?? null,
           timestamp: Date.now(),
@@ -219,6 +240,18 @@ export class QueueSession extends EventEmitter {
         lastUpdated: payload.timestamp,
         currentUrl: payload.url,
       });
+      if (payload.captchaVisible) {
+        if (payload.captchaDataUrl && payload.captchaDataUrl !== this.lastCaptchaDataUrl) {
+          this.lastCaptchaDataUrl = payload.captchaDataUrl;
+          this.updateState({
+            captchaImage: payload.captchaDataUrl,
+            captchaUpdatedAt: payload.timestamp,
+          });
+        }
+      } else if (this.lastCaptchaDataUrl) {
+        this.lastCaptchaDataUrl = null;
+        this.updateState({ captchaImage: null, captchaUpdatedAt: null });
+      }
       this.detectStalls();
     } catch (error) {
       this.updateState({ status: 'warning', message: `State poll failed: ${error.message}` });
@@ -395,6 +428,65 @@ export class QueueSession extends EventEmitter {
     await this.page.reload({ waitUntil: 'domcontentloaded' });
     const message = messageOverride || 'Manual reload triggered';
     this.updateState({ message });
+  }
+
+  async submitCaptcha(answer) {
+    if (!this.page || this.page.isClosed()) {
+      throw new Error('Browser page is not available');
+    }
+    const value = (answer ?? '').trim();
+    if (!value) {
+      throw new Error('Captcha answer is required');
+    }
+    try {
+      await this.page.evaluate(async (inputValue) => {
+        const input = document.querySelector('#secret');
+        if (!input) {
+          throw new Error('Captcha input not found');
+        }
+        input.value = inputValue;
+        const submitButton = document.querySelector('#submit_button');
+        if (submitButton) {
+          submitButton.click();
+          return;
+        }
+        if (typeof window.submitCaptcha === 'function') {
+          window.submitCaptcha();
+          return;
+        }
+        const form = document.querySelector('#form_captcha');
+        if (form) {
+          form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
+        }
+      }, value);
+      this.updateState({
+        message: 'Captcha answer submitted from dashboard',
+        lastCaptchaSubmission: Date.now(),
+      });
+    } catch (error) {
+      throw new Error(error.message || 'Captcha submission failed');
+    }
+  }
+
+  async refreshCaptcha() {
+    if (!this.page || this.page.isClosed()) {
+      throw new Error('Browser page is not available');
+    }
+    try {
+      await this.page.evaluate(() => {
+        if (typeof window.newCaptcha === 'function') {
+          window.newCaptcha();
+          return;
+        }
+        const refreshButton = document.querySelector('#newcaptcha_button a, #newcaptcha_button');
+        if (refreshButton instanceof HTMLElement) {
+          refreshButton.click();
+        }
+      });
+      this.updateState({ message: 'Captcha refresh requested from dashboard' });
+    } catch (error) {
+      throw new Error(error.message || 'Captcha refresh failed');
+    }
   }
 
   async restartSoon() {

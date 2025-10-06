@@ -67,6 +67,22 @@
             <div><dt>Last Updated</dt><dd class="last-updated"></dd></div>
           </dl>
         </div>
+        <div class="captcha-panel hidden">
+          <div class="captcha-row">
+            <img class="captcha-image" alt="Captcha challenge preview" />
+            <div class="captcha-controls">
+              <label>
+                <span>Captcha answer</span>
+                <input type="text" class="captcha-answer" autocomplete="off" maxlength="32" />
+              </label>
+              <div class="captcha-buttons">
+                <button type="button" data-action="submit-captcha">Submit captcha</button>
+                <button type="button" data-action="refresh-captcha" class="secondary">New captcha</button>
+              </div>
+              <p class="captcha-meta">Waiting for captcha…</p>
+            </div>
+          </div>
+        </div>
         <footer class="actions">
           <button data-action="bring">Bring to front</button>
           <button data-action="toggle-auto" class="secondary">Pause auto reload</button>
